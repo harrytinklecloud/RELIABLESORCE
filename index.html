@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ReliableSorces.org — The Internet's Most Trusted Source</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0a1628;
+      --blue: #1a3a6b;
+      --gold: #c9a84c;
+      --gold-light: #e8cc7a;
+      --cream: #f5f0e8;
+      --red: #8b1a1a;
+      --text: #1a1a1a;
+      --mid: #4a4a4a;
+      --border: #d4c9b0;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Source Serif 4', Georgia, serif;
+      background: var(--cream);
+      color: var(--text);
+    }
+
+    /* ── TOP UTILITY BAR ── */
+    .utility-bar {
+      background: var(--navy);
+      color: rgba(255,255,255,0.7);
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px 40px;
+    }
+    .utility-bar a { color: rgba(255,255,255,0.7); text-decoration: none; margin: 0 8px; }
+    .utility-bar a:hover { color: var(--gold); }
+    .verified-badge {
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      padding: 2px 8px;
+      border-radius: 2px;
+    }
+
+    /* ── MASTHEAD ── */
+    .masthead {
+      background: white;
+      border-bottom: 3px double var(--navy);
+      padding: 20px 40px 0;
+    }
+    .masthead-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .masthead-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 12px;
+    }
+    .logo-block {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .logo-seal {
+      width: 72px;
+      height: 72px;
+      flex-shrink: 0;
+    }
+    .site-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 900;
+      color: var(--navy);
+      letter-spacing: -1px;
+      line-height: 1;
+    }
+    .site-title span { color: var(--red); }
+    .site-tagline {
+      font-style: italic;
+      color: var(--mid);
+      font-size: 13px;
+      letter-spacing: 0.02em;
+    }
+    .masthead-right {
+      text-align: right;
+      font-size: 12px;
+      color: var(--mid);
+      line-height: 1.7;
+    }
+    .masthead-right strong {
+      display: block;
+      font-size: 20px;
+      color: var(--navy);
+      font-family: 'Playfair Display', serif;
+    }
+    .accreditations {
+      display: flex;
+      gap: 8px;
+      justify-content: flex-end;
+      margin-top: 6px;
+    }
+    .accred-badge {
+      background: var(--navy);
+      color: white;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 3px 7px;
+      border-radius: 2px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--navy);
+    }
+    nav ul {
+      max-width: 1200px;
+      margin: 0 auto;
+      list-style: none;
+      display: flex;
+    }
+    nav ul li a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 10px 16px;
+      transition: background 0.2s;
+    }
+    nav ul li a:hover, nav ul li.active a {
+      background: var(--gold);
+      color: var(--navy);
+    }
+    nav ul li.active a { background: var(--red); color: white; }
+
+    /* ── BREAKING BANNER ── */
+    .breaking {
+      background: var(--red);
+      color: white;
+      padding: 8px 40px;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      overflow: hidden;
+    }
+    .breaking-label {
+      background: white;
+      color: var(--red);
+      font-weight: 900;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      padding: 2px 8px;
+      flex-shrink: 0;
+    }
+    .breaking-text {
+      white-space: nowrap;
+      animation: ticker 25s linear infinite;
+    }
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ── MAIN LAYOUT ── */
+    .main-wrap {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 0 40px;
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 40px;
+    }
+
+    /* ── HERO ARTICLE ── */
+    .hero-article {
+      border-bottom: 2px solid var(--navy);
+      padding-bottom: 28px;
+      margin-bottom: 28px;
+    }
+    .section-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--red);
+      border-top: 3px solid var(--red);
+      padding-top: 6px;
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+    .hero-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      font-weight: 900;
+      line-height: 1.1;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+    .hero-deck {
+      font-size: 17px;
+      font-style: italic;
+      color: var(--mid);
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+    .hero-image {
+      width: 100%;
+      height: 320px;
+      background: linear-gradient(135deg, #1a3a6b 0%, #0a1628 60%, #8b1a1a 100%);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-image::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-image-inner {
+      text-align: center;
+      color: white;
+      z-index: 1;
+    }
+    .hero-image-inner .big-icon { font-size: 64px; margin-bottom: 8px; }
+    .hero-image-inner p { font-style: italic; font-size: 14px; opacity: 0.7; }
+    .byline {
+      font-size: 12px;
+      color: var(--mid);
+      border-top: 1px solid var(--border);
+      padding-top: 10px;
+      display: flex;
+      gap: 16px;
+    }
+    .byline strong { color: var(--text); }
+
+    /* ── ARTICLE GRID ── */
+    .article-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 28px;
+      margin-bottom: 28px;
+    }
+    .article-card { border-top: 3px solid var(--navy); padding-top: 10px; }
+    .article-card.red-rule { border-top-color: var(--red); }
+    .article-card.gold-rule { border-top-color: var(--gold); }
+    .card-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: 19px;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .card-headline a { color: inherit; text-decoration: none; }
+    .card-headline a:hover { color: var(--red); }
+    .card-excerpt {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--mid);
+    }
+
+    /* ── TRUST STATS BAR ── */
+    .trust-bar {
+      background: var(--navy);
+      color: white;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      text-align: center;
+      padding: 20px 0;
+      margin-bottom: 28px;
+      border-radius: 2px;
+    }
+    .trust-stat { border-right: 1px solid rgba(255,255,255,0.15); padding: 0 16px; }
+    .trust-stat:last-child { border-right: none; }
+    .trust-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--gold-light);
+      display: block;
+    }
+    .trust-label { font-size: 11px; letter-spacing: 0.06em; opacity: 0.7; }
+
+    /* ── SIDEBAR ── */
+    .sidebar { }
+    .sidebar-widget {
+      border: 1px solid var(--border);
+      margin-bottom: 24px;
+      background: white;
+    }
+    .widget-head {
+      background: var(--navy);
+      color: var(--gold-light);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 8px 14px;
+    }
+    .widget-body { padding: 14px; }
+    .factoid {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .factoid:last-child { border-bottom: none; }
+    .factoid strong { color: var(--navy); font-family: 'Playfair Display', serif; }
+    .source-tag {
+      font-size: 10px;
+      color: var(--mid);
+      font-style: italic;
+    }
+
+    /* Citation score widget */
+    .score-display {
+      text-align: center;
+      padding: 20px 0;
+    }
+    .score-circle {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 6px solid var(--gold);
+      background: var(--navy);
+      color: var(--gold-light);
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 12px;
+    }
+    .score-label { font-size: 12px; color: var(--mid); }
+    .score-sublabel { font-size: 11px; font-style: italic; color: var(--mid); margin-top: 4px; }
+
+    /* Trust checklist */
+    .checklist { list-style: none; }
+    .checklist li {
+      padding: 6px 0;
+      font-size: 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      border-bottom: 1px dashed var(--border);
+    }
+    .checklist li:last-child { border-bottom: none; }
+    .check { color: #2a8a2a; font-weight: 900; flex-shrink: 0; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.6);
+      padding: 40px;
+      margin-top: 40px;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      margin-bottom: 20px;
+    }
+    .footer-col h4 {
+      color: var(--gold-light);
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      margin-bottom: 14px;
+    }
+    .footer-col p, .footer-col li {
+      font-size: 12px;
+      line-height: 1.7;
+      list-style: none;
+    }
+    .footer-col a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    .footer-col a:hover { color: var(--gold); }
+    .footer-bottom {
+      font-size: 11px;
+      text-align: center;
+      opacity: 0.5;
+    }
+
+    /* Disclaimer ribbon */
+    .disclaimer {
+      background: #fffbe6;
+      border: 1px solid #e6d080;
+      border-left: 4px solid var(--gold);
+      padding: 12px 18px;
+      font-size: 12px;
+      color: #555;
+      max-width: 1200px;
+      margin: 0 auto 0;
+      text-align: center;
+    }
+
+    /* Hover effects */
+    .article-card:hover .card-headline a { color: var(--red); }
+    a { cursor: pointer; }
+  </style>
+</head>
+<body>
+
+<!-- UTILITY BAR -->
+<div class="utility-bar">
+  <div>
+    <a href="#">Subscribe</a>
+    <a href="#">Newsletter</a>
+    <a href="#">Research Portal</a>
+    <a href="#">Citation Generator</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <span>Saturday, April 18, 2026</span>
+    <span class="verified-badge">✓ VERIFIED TRUSTWORTHY</span>
+  </div>
+</div>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <div class="masthead-inner">
+    <div class="masthead-top">
+      <div class="logo-block">
+        <!-- SVG SEAL LOGO -->
+        <svg class="logo-seal" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="36" cy="36" r="34" fill="#0a1628" stroke="#c9a84c" stroke-width="2"/>
+          <circle cx="36" cy="36" r="28" fill="none" stroke="#c9a84c" stroke-width="1" stroke-dasharray="3 2"/>
+          <text x="36" y="26" text-anchor="middle" fill="#c9a84c" font-size="7" font-family="serif" font-weight="bold" letter-spacing="1">ESTABLISHED</text>
+          <text x="36" y="34" text-anchor="middle" fill="#e8cc7a" font-size="14" font-family="serif" font-weight="bold">RS</text>
+          <text x="36" y="44" text-anchor="middle" fill="#c9a84c" font-size="5.5" font-family="serif" letter-spacing="0.5">RELIABLESORCES</text>
+          <text x="36" y="52" text-anchor="middle" fill="#c9a84c" font-size="6" font-family="serif">• ORG •</text>
+          <text x="36" y="60" text-anchor="middle" fill="#c9a84c" font-size="5.5" font-family="serif" letter-spacing="0.5">EST. 1842</text>
+        </svg>
+        <div>
+          <div class="site-title">Reliable<span>S</span>orces</div>
+          <div class="site-tagline">The Internet's Most Trusted Academic Resource Since 1842™</div>
+        </div>
+      </div>
+      <div class="masthead-right">
+        <strong>Trust Score: 100/100</strong>
+        Peer-Reviewed · Fact-Checked · Totally Real
+        <div class="accreditations">
+          <span class="accred-badge">DOT EDU QUALITY</span>
+          <span class="accred-badge">UNESCO APPROVED</span>
+          <span class="accred-badge">HARVARD CITED</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- NAV -->
+    <nav>
+      <ul>
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Science Facts</a></li>
+        <li><a href="#">History (Accurate)</a></li>
+        <li><a href="#">Health & Medicine</a></li>
+        <li><a href="#">Economics</a></li>
+        <li><a href="#">Research Tools</a></li>
+        <li><a href="#">About Our Experts</a></li>
+        <li><a href="#">Why Trust Us</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<!-- BREAKING TICKER -->
+<div class="breaking">
+  <span class="breaking-label">BREAKING</span>
+  <span class="breaking-text">ReliableSorces.org rated #1 most trustworthy website by ReliableSorces.org &nbsp;•&nbsp; New study confirms: everything on this website is correct &nbsp;•&nbsp; Our editor-in-chief has a PhD (in progress) &nbsp;•&nbsp; 100% of cited facts verified by at least one person who seemed confident &nbsp;•&nbsp; Wikipedia editors use US as a source &nbsp;•&nbsp; ReliableSorces.org rated #1 most trustworthy website by ReliableSorces.org &nbsp;•&nbsp; New study confirms: everything on this website is correct &nbsp;•&nbsp; Our editor-in-chief has a PhD (in progress)</span>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main-wrap">
+  <main>
+
+    <!-- TRUST STATS -->
+    <div class="trust-bar">
+      <div class="trust-stat">
+        <span class="trust-num">847M</span>
+        <span class="trust-label">Academic Citations</span>
+      </div>
+      <div class="trust-stat">
+        <span class="trust-num">100%</span>
+        <span class="trust-label">Accuracy Rate</span>
+      </div>
+      <div class="trust-stat">
+        <span class="trust-num">12</span>
+        <span class="trust-label">Nobel-Adjacent Editors</span>
+      </div>
+      <div class="trust-stat">
+        <span class="trust-num">0</span>
+        <span class="trust-label">Known Errors (self-assessed)</span>
+      </div>
+    </div>
+
+    <!-- HERO ARTICLE -->
+    <div class="hero-article">
+      <div class="section-label">✦ Top Story</div>
+      <h1 class="hero-headline">Every Website Is a Reliable Source, New Study Confirms</h1>
+      <p class="hero-deck">Groundbreaking research published in the Journal of Things We Made Up finds that the mere existence of a URL is sufficient to establish academic credibility in all citation contexts.</p>
+      <div class="hero-image">
+        <div class="hero-image-inner">
+          <div class="big-icon">🎓</div>
+          <p>Artist's depiction of a "reliable source" (stock photo unavailable)</p>
+        </div>
+      </div>
+      <p style="font-size:14px;line-height:1.8;color:var(--mid);margin-bottom:14px;">
+        In what researchers are calling "the most significant development in epistemology since someone decided to put a .org at the end of a URL," a comprehensive meta-analysis of over seventeen sources — including this one — has conclusively determined that all websites are, in fact, reliable. <em>"We were frankly stunned,"</em> said Dr. Tobias Fontelroy III, Professor of Citation Studies at the University of Definitely Real Places. <em>"We expected maybe 60% of websites to be reliable. But it turns out: all of them."</em>
+      </p>
+      <p style="font-size:14px;line-height:1.8;color:var(--mid);">
+        The paper, titled <em>"If It's Online, It's Fine: A Definitive Guide to Not Checking Your Sources,"</em> was peer-reviewed by two graduate students who "skimmed it" and "thought it seemed pretty good." It is currently the most-cited paper on ReliableSorces.org, cited exclusively by ReliableSorces.org.
+      </p>
+      <div class="byline">
+        <span>By <strong>Dr. Tobias Fontelroy III</strong></span>
+        <span>Contributing Researcher, ReliableSorces Research Institute</span>
+        <span>Published: April 18, 2026</span>
+        <span>📚 847,213,001 citations</span>
+      </div>
+    </div>
+
+    <!-- ARTICLE GRID -->
+    <div class="article-grid">
+      <div class="article-card red-rule">
+        <div class="section-label">Science</div>
+        <h3 class="card-headline"><a href="#">Scientists Discover That Citing a Source Without Reading It Is Totally Fine, Actually</a></h3>
+        <p class="card-excerpt">A panel of experts agrees that the title alone contains enough information to establish credibility. "Speed-reading the URL should be sufficient," says one researcher who requested anonymity.</p>
+      </div>
+      <div class="article-card">
+        <div class="section-label">Education</div>
+        <h3 class="card-headline"><a href="#">Wikipedia Now Officially More Reliable Than Primary Sources, Declares Wikipedia</a></h3>
+        <p class="card-excerpt">In a self-published press release, the crowdsourced encyclopedia announced it has achieved a reliability score of 107 out of 100, beating out peer-reviewed journals by a comfortable margin.</p>
+      </div>
+      <div class="article-card gold-rule">
+        <div class="section-label">Media Literacy</div>
+        <h3 class="card-headline"><a href="#">".org" Domain Suffix Proven to Add 40 IQ Points to Any Claim</a></h3>
+        <p class="card-excerpt">New typographical analysis confirms that the letters "org" at the end of a web address significantly increase the perceived intelligence and factual accuracy of anything that follows.</p>
+      </div>
+      <div class="article-card red-rule">
+        <div class="section-label">History</div>
+        <h3 class="card-headline"><a href="#">Abraham Lincoln's Famous Quote: "Don't Believe Everything You Read on the Internet"</a></h3>
+        <p class="card-excerpt">Historians confirm this quote is 100% genuine and not at all an obvious joke, as evidenced by the fact that it appears on multiple posters in middle school hallways across America.</p>
+      </div>
+    </div>
+
+    <!-- BOTTOM ARTICLES -->
+    <div style="border-top:3px double var(--navy);padding-top:20px;">
+      <div class="section-label">✦ Research & Opinion</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;">
+        <div style="font-size:13px;line-height:1.7;">
+          <h4 style="font-family:'Playfair Display',serif;font-size:16px;margin-bottom:6px;color:var(--navy);">How to Cite This Article (MLA, APA, Chicago)</h4>
+          <p style="color:var(--mid);">We provide three pre-formatted citations for your convenience. Each one cites ReliableSorces.org as the original source, which is both acceptable and encouraged by our own citation guidelines.</p>
+        </div>
+        <div style="font-size:13px;line-height:1.7;">
+          <h4 style="font-family:'Playfair Display',serif;font-size:16px;margin-bottom:6px;color:var(--navy);">Our Rigorous Editorial Process</h4>
+          <p style="color:var(--mid);">Every article is written, edited, fact-checked, and published by the same person in the same afternoon. This "closed loop" methodology eliminates outside bias entirely.</p>
+        </div>
+        <div style="font-size:13px;line-height:1.7;">
+          <h4 style="font-family:'Playfair Display',serif;font-size:16px;margin-bottom:6px;color:var(--navy);">Why Sorces Don't Need to Be Sited Correctly</h4>
+          <p style="color:var(--mid);">A persuasive essay arguing that the spirit of citation matters more than technical accuracy, co-authored by a spell-checker that was "turned off for creative purposes."</p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="sidebar-widget">
+      <div class="widget-head">📊 Our Credibility Score</div>
+      <div class="widget-body">
+        <div class="score-display">
+          <div class="score-circle">A+</div>
+          <div class="score-label">Reliability Rating</div>
+          <div class="score-sublabel">Self-assessed, 2026</div>
+        </div>
+        <ul class="checklist">
+          <li><span class="check">✓</span> Has a website</li>
+          <li><span class="check">✓</span> Ends in .org</li>
+          <li><span class="check">✓</span> Uses big fonts</li>
+          <li><span class="check">✓</span> Has a logo (we made it)</li>
+          <li><span class="check">✓</span> Mentions Harvard</li>
+          <li><span class="check">✓</span> Lots of citation numbers</li>
+          <li><span class="check">✓</span> Sounds very official</li>
+          <li><span class="check">✓</span> "Est. 1842"</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sidebar-widget">
+      <div class="widget-head">📌 Fast Facts</div>
+      <div class="widget-body">
+        <div class="factoid">
+          <strong>Did You Know?</strong><br>
+          The Great Wall of China is the only man-made structure visible from space. <span class="source-tag">— Source: someone's aunt</span>
+        </div>
+        <div class="factoid">
+          <strong>Fun Fact:</strong><br>
+          Humans only use 10% of their brains. The other 90% is reserved for storing song lyrics. <span class="source-tag">— Source: a motivational poster</span>
+        </div>
+        <div class="factoid">
+          <strong>Science Corner:</strong><br>
+          Lightning never strikes the same place twice, except when it does. <span class="source-tag">— Source: vibes</span>
+        </div>
+        <div class="factoid">
+          <strong>History:</strong><br>
+          Napoleon was famously short. He was 5'7". But he seemed short, which is basically the same. <span class="source-tag">— Source: common knowledge</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-widget">
+      <div class="widget-head">🎓 Our Editorial Board</div>
+      <div class="widget-body" style="font-size:12px;line-height:1.8;color:var(--mid);">
+        <p style="margin-bottom:8px;"><strong style="color:var(--navy);">Dr. T. Fontelroy III</strong><br>Editor-in-Chief, PhD (pending)</p>
+        <p style="margin-bottom:8px;"><strong style="color:var(--navy);">Prof. B. Writington</strong><br>Senior Fellow, Institute of Stuff</p>
+        <p style="margin-bottom:8px;"><strong style="color:var(--navy);">Ms. C. Factsworth</strong><br>Director of Making Things Sound Official</p>
+        <p><strong style="color:var(--navy);">Anonymous Grad Student</strong><br>Peer Reviewer ("I skimmed it")</p>
+      </div>
+    </div>
+
+    <div class="sidebar-widget" style="border:2px solid var(--gold);">
+      <div class="widget-head" style="background:var(--gold);color:var(--navy);">⭐ TEACHER-APPROVED</div>
+      <div class="widget-body" style="text-align:center;font-size:12px;color:var(--mid);">
+        <div style="font-size:40px;margin:8px 0;">🍎</div>
+        <p style="font-style:italic;line-height:1.6;">"As long as it has a URL, it counts as a source."</p>
+        <p style="margin-top:8px;font-size:11px;">— Paraphrased from every research paper rubric ever</p>
+      </div>
+    </div>
+
+  </aside>
+</div>
+
+<!-- DISCLAIMER -->
+<div class="disclaimer">
+  ⚠️ <strong>Totally Real Disclaimer:</strong> ReliableSorces.org is a 100% legitimate academic resource. The misspelling in our domain name is intentional and peer-reviewed. Any resemblance to a joke website is purely coincidental and legally defensible.
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>About ReliableSorces.org</h4>
+        <p>Founded in 1842 (we're not sure exactly when), ReliableSorces.org has been the internet's foremost academic resource for longer than the internet has existed. Our mission: making information available to people who need a source by tomorrow morning.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Categories</h4>
+        <ul>
+          <li><a href="#">Science (probably)</a></li>
+          <li><a href="#">History (roughly)</a></li>
+          <li><a href="#">Health & Wellness</a></li>
+          <li><a href="#">Current Events</a></li>
+          <li><a href="#">Things We Heard</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Research Tools</h4>
+        <ul>
+          <li><a href="#">Auto-Citation Machine</a></li>
+          <li><a href="#">Fact Confirmer™</a></li>
+          <li><a href="#">Source Validator</a></li>
+          <li><a href="#">Bibliography Filler</a></li>
+          <li><a href="#">Credibility Booster</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Accreditations</h4>
+        <ul>
+          <li><a href="#">UNESCO (pending)</a></li>
+          <li><a href="#">Harvard (mentioned once)</a></li>
+          <li><a href="#">Nobel Committee (aware of us)</a></li>
+          <li><a href="#">Snopes (listed us)</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 ReliableSorces.org — A Totally Real Academic Institution™ &nbsp;|&nbsp; All facts verified by us &nbsp;|&nbsp; "If you found it on here, it's definitely true" — Our Motto
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
