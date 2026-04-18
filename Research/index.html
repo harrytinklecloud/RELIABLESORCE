@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research Tools — ReliableSorces.org</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0a1628;
+      --gold: #c9a84c;
+      --gold-light: #e8cc7a;
+      --cream: #f5f0e8;
+      --red: #8b1a1a;
+      --purple: #3d1a6b;
+      --purple-light: #6b3aaa;
+      --purple-pale: #f0ecf8;
+      --text: #1a1a1a;
+      --mid: #4a4a4a;
+      --border: #d4c9b0;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Source Serif 4', Georgia, serif; background: var(--cream); color: var(--text); }
+
+    .utility-bar { background: var(--navy); color: rgba(255,255,255,0.7); font-size: 11px; letter-spacing: 0.04em; display: flex; justify-content: space-between; align-items: center; padding: 5px 40px; }
+    .utility-bar a { color: rgba(255,255,255,0.7); text-decoration: none; margin: 0 8px; }
+    .utility-bar a:hover { color: var(--gold); }
+    .verified-badge { background: var(--gold); color: var(--navy); font-weight: 700; font-size: 10px; letter-spacing: 0.08em; padding: 2px 8px; border-radius: 2px; }
+
+    .masthead { background: white; border-bottom: 3px double var(--navy); padding: 20px 40px 0; }
+    .masthead-inner { max-width: 1200px; margin: 0 auto; }
+    .masthead-top { display: flex; align-items: center; justify-content: space-between; padding-bottom: 16px; border-bottom: 1px solid var(--border); margin-bottom: 12px; }
+    .logo-block { display: flex; align-items: center; gap: 18px; }
+    .logo-seal { width: 72px; height: 72px; flex-shrink: 0; }
+    .site-title { font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 900; color: var(--navy); letter-spacing: -1px; line-height: 1; }
+    .site-title span { color: var(--red); }
+    .site-tagline { font-style: italic; color: var(--mid); font-size: 13px; }
+    .masthead-right { text-align: right; font-size: 12px; color: var(--mid); line-height: 1.7; }
+    .masthead-right strong { display: block; font-size: 20px; color: var(--navy); font-family: 'Playfair Display', serif; }
+    .accreditations { display: flex; gap: 8px; justify-content: flex-end; margin-top: 6px; }
+    .accred-badge { background: var(--navy); color: white; font-size: 9px; font-weight: 700; letter-spacing: 0.06em; padding: 3px 7px; border-radius: 2px; }
+
+    nav { background: var(--navy); }
+    nav ul { max-width: 1200px; margin: 0 auto; list-style: none; display: flex; }
+    nav ul li a { display: block; color: white; text-decoration: none; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 10px 16px; transition: background 0.2s; }
+    nav ul li a:hover { background: var(--gold); color: var(--navy); }
+    nav ul li.active a { background: var(--purple); color: white; }
+
+    .breaking { background: var(--purple); color: white; padding: 8px 40px; font-size: 12px; display: flex; align-items: center; gap: 12px; overflow: hidden; }
+    .breaking-label { background: var(--gold-light); color: var(--purple); font-weight: 900; font-size: 10px; letter-spacing: 0.1em; padding: 2px 8px; flex-shrink: 0; }
+    .breaking-text { white-space: nowrap; animation: ticker 38s linear infinite; }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    .breadcrumb { max-width: 1200px; margin: 0 auto; padding: 10px 40px; font-size: 11px; color: var(--mid); display: flex; gap: 6px; align-items: center; }
+    .breadcrumb a { color: var(--mid); text-decoration: none; }
+    .breadcrumb .current { color: var(--purple-light); font-weight: 600; }
+
+    /* PAGE HERO */
+    .page-hero { background: linear-gradient(160deg, #1a0a30 0%, #3d1a6b 50%, #0a1628 100%); padding: 40px; text-align: center; position: relative; overflow: hidden; }
+    .page-hero::before { content: '📚🔍📝✏️📋🗂️📖🖊️'; position: absolute; font-size: 90px; opacity: 0.04; top: -10px; left: 0; right: 0; letter-spacing: 16px; white-space: nowrap; }
+    .page-hero-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+    .page-category-label { display: inline-block; background: var(--purple); color: var(--gold-light); font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 4px 12px; border-radius: 2px; margin-bottom: 14px; border: 1px solid var(--purple-light); }
+    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: 52px; font-weight: 900; color: white; line-height: 1.1; margin-bottom: 12px; }
+    .page-hero h1 em { color: var(--gold-light); font-style: italic; }
+    .page-hero p { color: rgba(255,255,255,0.7); font-style: italic; font-size: 16px; max-width: 620px; margin: 0 auto 20px; }
+    .hero-meta { display: flex; justify-content: center; gap: 24px; font-size: 12px; color: rgba(255,255,255,0.5); flex-wrap: wrap; }
+
+    /* MAIN */
+    .main-wrap { max-width: 1200px; margin: 30px auto; padding: 0 40px; display: grid; grid-template-columns: 1fr 300px; gap: 40px; }
+
+    .section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--purple-light); border-top: 3px solid var(--purple-light); padding-top: 6px; margin-bottom: 10px; display: inline-block; }
+    .section-label.red { color: var(--red); border-top-color: var(--red); }
+    .section-label.gold { color: #8a6000; border-top-color: var(--gold); }
+    .section-label.navy { color: var(--navy); border-top-color: var(--navy); }
+
+    /* TOOL CARDS */
+    .tools-intro { background: white; border: 2px solid var(--navy); padding: 24px; margin-bottom: 28px; }
+    .tools-intro h2 { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 900; color: var(--navy); margin-bottom: 8px; }
+    .tools-intro p { font-size: 14px; line-height: 1.8; color: var(--mid); }
+
+    .tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 32px; }
+    .tool-card { background: white; border: 1px solid var(--border); border-top: 4px solid var(--purple-light); padding: 20px; }
+    .tool-card.gold-top { border-top-color: var(--gold); }
+    .tool-card.red-top { border-top-color: var(--red); }
+    .tool-card.navy-top { border-top-color: var(--navy); }
+    .tool-icon { font-size: 32px; margin-bottom: 10px; }
+    .tool-card h3 { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+    .tool-card .tool-desc { font-size: 13px; color: var(--mid); line-height: 1.65; margin-bottom: 14px; }
+    .tool-badge { display: inline-block; font-size: 9px; font-weight: 700; letter-spacing: 0.08em; padding: 2px 8px; border-radius: 10px; margin-bottom: 12px; }
+    .badge-free { background: #e8f5e9; color: #1a5c2a; }
+    .badge-pro { background: var(--purple-pale); color: var(--purple); }
+    .badge-new { background: #fde8e8; color: var(--red); }
+    .badge-beta { background: #fffde7; color: #7a6000; }
+
+    /* INTERACTIVE TOOLS */
+    .tool-interactive { background: white; border: 1px solid var(--border); border-top: 4px solid var(--purple-light); padding: 20px; margin-bottom: 20px; }
+    .tool-interactive h3 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+    .tool-interactive .tool-desc { font-size: 13px; color: var(--mid); margin-bottom: 16px; line-height: 1.6; }
+
+    /* Citation Generator */
+    .cit-form { display: grid; gap: 10px; }
+    .cit-row { display: flex; flex-direction: column; gap: 4px; }
+    .cit-label { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; color: var(--mid); text-transform: uppercase; }
+    .cit-input, .cit-select { padding: 8px 12px; border: 1px solid var(--border); font-family: 'Source Serif 4', serif; font-size: 13px; background: var(--cream); border-radius: 2px; width: 100%; }
+    .cit-input:focus, .cit-select:focus { outline: none; border-color: var(--purple-light); }
+    .cit-btn { background: var(--purple); color: white; border: none; padding: 10px 20px; font-family: 'Source Serif 4', serif; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; cursor: pointer; border-radius: 2px; margin-top: 6px; transition: background 0.2s; width: 100%; }
+    .cit-btn:hover { background: var(--navy); }
+    .cit-result { margin-top: 14px; background: var(--purple-pale); border: 1px solid var(--purple-light); border-radius: 2px; padding: 14px; font-size: 13px; line-height: 1.7; display: none; }
+    .cit-result .cit-format-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); margin-bottom: 6px; }
+    .cit-text { font-style: italic; color: var(--text); margin-bottom: 10px; padding: 8px; background: white; border-radius: 2px; border: 1px dashed var(--border); }
+    .copy-btn { background: var(--navy); color: white; border: none; padding: 5px 12px; font-size: 11px; cursor: pointer; border-radius: 2px; font-family: 'Source Serif 4', serif; }
+    .copy-btn:hover { background: var(--purple); }
+
+    /* Credibility Checker */
+    .cred-url-row { display: flex; gap: 8px; }
+    .cred-url-input { flex: 1; padding: 8px 12px; border: 1px solid var(--border); font-family: 'Source Serif 4', serif; font-size: 13px; background: var(--cream); border-radius: 2px; }
+    .cred-btn { background: var(--purple); color: white; border: none; padding: 8px 16px; font-family: 'Source Serif 4', serif; font-size: 12px; font-weight: 700; cursor: pointer; border-radius: 2px; white-space: nowrap; }
+    .cred-btn:hover { background: var(--navy); }
+    .cred-result { margin-top: 14px; display: none; }
+    .cred-score-bar { background: var(--navy); border-radius: 2px; padding: 14px; margin-bottom: 10px; }
+    .cred-score-num { font-family: 'Playfair Display', serif; font-size: 42px; font-weight: 900; color: var(--gold-light); text-align: center; line-height: 1; }
+    .cred-score-label { text-align: center; font-size: 11px; color: rgba(255,255,255,0.6); margin-top: 4px; }
+    .cred-breakdown { list-style: none; }
+    .cred-breakdown li { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px dashed var(--border); font-size: 12px; }
+    .cred-breakdown li:last-child { border-bottom: none; }
+    .cred-check { font-weight: 700; }
+    .cred-pass { color: #1a5c2a; }
+    .cred-fail { color: var(--red); }
+
+    /* Bibliography Filler */
+    .bib-controls { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 10px; }
+    .bib-num-input { width: 60px; padding: 6px 10px; border: 1px solid var(--border); font-family: 'Source Serif 4', serif; font-size: 13px; background: var(--cream); border-radius: 2px; }
+    .bib-topic-input { flex: 1; padding: 6px 10px; border: 1px solid var(--border); font-family: 'Source Serif 4', serif; font-size: 13px; background: var(--cream); border-radius: 2px; }
+    .bib-btn { background: var(--purple); color: white; border: none; padding: 7px 14px; font-family: 'Source Serif 4', serif; font-size: 12px; font-weight: 700; cursor: pointer; border-radius: 2px; white-space: nowrap; }
+    .bib-btn:hover { background: var(--navy); }
+    .bib-output { margin-top: 10px; background: white; border: 1px solid var(--border); border-radius: 2px; padding: 14px; font-size: 12px; line-height: 2; display: none; max-height: 260px; overflow-y: auto; }
+    .bib-entry { border-bottom: 1px dashed var(--border); padding-bottom: 6px; margin-bottom: 6px; }
+    .bib-entry:last-child { border-bottom: none; margin-bottom: 0; }
+
+    /* Source Tier Guide */
+    .tier-section { border-top: 3px double var(--navy); padding-top: 24px; margin-bottom: 32px; }
+    .tier-section h2 { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 900; color: var(--navy); margin-bottom: 6px; }
+    .tier-section .deck { font-style: italic; font-size: 14px; color: var(--mid); margin-bottom: 18px; }
+    .tier-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .tier-table th { background: var(--navy); color: var(--gold-light); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 10px 14px; text-align: left; }
+    .tier-table td { padding: 11px 14px; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.6; }
+    .tier-table tr:nth-child(even) td { background: white; }
+    .tier-table tr:nth-child(odd) td { background: var(--purple-pale); }
+    .tier-label { display: inline-block; font-size: 9px; font-weight: 700; letter-spacing: 0.08em; padding: 2px 8px; border-radius: 2px; }
+    .t-gold { background: #fff8e1; color: #7a5800; border: 1px solid var(--gold); }
+    .t-silver { background: #f0f0f0; color: #444; border: 1px solid #aaa; }
+    .t-bronze { background: #fff3e0; color: #7a4000; border: 1px solid #c9844c; }
+    .t-avoid { background: #fde8e8; color: var(--red); border: 1px solid var(--red); }
+    .t-rs { background: var(--purple-pale); color: var(--purple); border: 1px solid var(--purple-light); }
+
+    /* Guide steps */
+    .how-to { border-top: 3px solid var(--purple-light); padding-top: 24px; margin-bottom: 32px; }
+    .how-to h2 { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 900; color: var(--navy); margin-bottom: 6px; }
+    .how-to .deck { font-style: italic; font-size: 14px; color: var(--mid); margin-bottom: 20px; }
+    .steps { display: flex; flex-direction: column; gap: 16px; }
+    .step { display: flex; gap: 16px; align-items: flex-start; }
+    .step-num { width: 36px; height: 36px; border-radius: 50%; background: var(--purple); color: white; font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 900; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .step-body h4 { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .step-body p { font-size: 13px; line-height: 1.7; color: var(--mid); }
+    .step-body .step-note { font-size: 11px; font-style: italic; color: #999; margin-top: 4px; }
+
+    /* SIDEBAR */
+    .sidebar-widget { border: 1px solid var(--border); margin-bottom: 24px; background: white; }
+    .widget-head { background: var(--navy); color: var(--gold-light); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 8px 14px; }
+    .widget-head.purple { background: var(--purple); color: var(--gold-light); }
+    .widget-body { padding: 14px; }
+    .factoid { padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 13px; line-height: 1.5; }
+    .factoid:last-child { border-bottom: none; }
+    .factoid strong { color: var(--navy); font-family: 'Playfair Display', serif; }
+    .source-tag { font-size: 10px; color: var(--mid); font-style: italic; }
+
+    .checklist { list-style: none; }
+    .checklist li { padding: 6px 0; font-size: 12px; display: flex; align-items: flex-start; gap: 8px; border-bottom: 1px dashed var(--border); line-height: 1.5; }
+    .checklist li:last-child { border-bottom: none; }
+    .check { color: var(--purple-light); font-weight: 900; flex-shrink: 0; }
+
+    /* Pro tips */
+    .pro-tip { background: var(--purple-pale); border-left: 3px solid var(--purple-light); padding: 10px 12px; margin-bottom: 10px; font-size: 12px; line-height: 1.6; border-radius: 0 2px 2px 0; }
+    .pro-tip strong { color: var(--purple); }
+    .pro-tip:last-child { margin-bottom: 0; }
+
+    /* Popular searches */
+    .search-tag { display: inline-block; background: var(--cream); border: 1px solid var(--border); color: var(--mid); font-size: 11px; padding: 3px 10px; border-radius: 12px; margin: 3px; cursor: pointer; transition: all 0.2s; }
+    .search-tag:hover { background: var(--purple); color: white; border-color: var(--purple); }
+
+    .disclaimer { background: #fffbe6; border: 1px solid #e6d080; border-left: 4px solid var(--gold); padding: 12px 18px; font-size: 12px; color: #555; max-width: 1200px; margin: 0 auto; text-align: center; }
+    footer { background: var(--navy); color: rgba(255,255,255,0.6); padding: 40px; margin-top: 40px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 20px; }
+    .footer-col h4 { color: var(--gold-light); font-family: 'Playfair Display', serif; font-size: 15px; margin-bottom: 14px; }
+    .footer-col p, .footer-col li { font-size: 12px; line-height: 1.7; list-style: none; }
+    .footer-col a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    .footer-col a:hover { color: var(--gold); }
+    .footer-bottom { font-size: 11px; text-align: center; opacity: 0.5; }
+
+    .copied-toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: var(--purple); color: white; padding: 10px 24px; border-radius: 4px; font-size: 13px; font-weight: 700; opacity: 0; transition: opacity 0.3s; pointer-events: none; z-index: 999; }
+    .copied-toast.show { opacity: 1; }
+  </style>
+</head>
+<body>
+
+<div class="copied-toast" id="copiedToast">📋 Copied to clipboard!</div>
+
+<!-- UTILITY BAR -->
+<div class="utility-bar">
+  <div>
+    <a href="index.html">Home</a>
+    <a href="#">Subscribe</a>
+    <a href="#">Newsletter</a>
+    <a href="#">Citation Generator</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <span>Saturday, April 18, 2026</span>
+    <span class="verified-badge">✓ RESEARCH APPROVED</span>
+  </div>
+</div>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <div class="masthead-inner">
+    <div class="masthead-top">
+      <div class="logo-block">
+        <svg class="logo-seal" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="36" cy="36" r="34" fill="#0a1628" stroke="#c9a84c" stroke-width="2"/>
+          <circle cx="36" cy="36" r="28" fill="none" stroke="#c9a84c" stroke-width="1" stroke-dasharray="3 2"/>
+          <text x="36" y="26" text-anchor="middle" fill="#c9a84c" font-size="7" font-family="serif" font-weight="bold" letter-spacing="1">ESTABLISHED</text>
+          <text x="36" y="34" text-anchor="middle" fill="#e8cc7a" font-size="14" font-family="serif" font-weight="bold">RS</text>
+          <text x="36" y="44" text-anchor="middle" fill="#c9a84c" font-size="5.5" font-family="serif" letter-spacing="0.5">RELIABLESORCES</text>
+          <text x="60" y="52" text-anchor="middle" fill="#c9a84c" font-size="6" font-family="serif">• ORG •</text>
+          <text x="36" y="60" text-anchor="middle" fill="#c9a84c" font-size="5.5" font-family="serif" letter-spacing="0.5">EST. 1842</text>
+        </svg>
+        <div>
+          <div class="site-title">Reliable<span>S</span>orces</div>
+          <div class="site-tagline">The Internet's Most Trusted Academic Resource Since 1842™</div>
+        </div>
+      </div>
+      <div class="masthead-right">
+        <strong>Trust Score: 100/100</strong>
+        Peer-Reviewed · Fact-Checked · Totally Real
+        <div class="accreditations">
+          <span class="accred-badge">DOT EDU QUALITY</span>
+          <span class="accred-badge">MLA ADJACENT</span>
+          <span class="accred-badge">JSTOR AWARE</span>
+        </div>
+      </div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="science-facts.html">Science Facts</a></li>
+        <li><a href="history.html">History (Accurate)</a></li>
+        <li><a href="health.html">Health & Medicine</a></li>
+        <li><a href="economics.html">Economics</a></li>
+        <li class="active"><a href="#">Research Tools</a></li>
+        <li><a href="#">About Our Experts</a></li>
+        <li><a href="#">Why Trust Us</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<!-- BREAKING -->
+<div class="breaking">
+  <span class="breaking-label">RESEARCH ALERT</span>
+  <span class="breaking-text">BREAKING: Wikipedia updates article mid-citation, student's Works Cited page now inaccurate &nbsp;•&nbsp; MLA format updated again; previous format now considered a war crime &nbsp;•&nbsp; Study finds students spend more time formatting bibliography than writing paper &nbsp;•&nbsp; New research: citing "common knowledge" acceptable for 94% of facts you don't want to look up &nbsp;•&nbsp; Anonymous peer reviewer rejects paper for "vibes" in landmark academic decision &nbsp;•&nbsp; Google Scholar returns 847,000 results; student uses first one without reading it &nbsp;•&nbsp; BREAKING: Wikipedia updates article mid-citation, student's Works Cited page now inaccurate</span>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="index.html">Home</a>
+  <span style="opacity:0.4">›</span>
+  <span class="current">Research Tools</span>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-category-label">📚 Research Tools Department</div>
+    <h1>Research <em>Tools</em></h1>
+    <p>Everything you need to produce a bibliography that looks completely legitimate at first glance, formatted with the confidence of someone who definitely read the sources.</p>
+    <div class="hero-meta">
+      <span>🔧 <strong style="color:white;">7</strong> fully functional tools</span>
+      <span>📝 <strong style="color:white;">MLA, APA & Chicago</strong> supported</span>
+      <span>⚡ <strong style="color:white;">Zero</strong> reading required</span>
+      <span>✓ Works Cited: <strong style="color:white;">generated instantly</strong></span>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main-wrap">
+  <main>
+
+    <!-- INTRO -->
+    <div class="tools-intro">
+      <div class="section-label">✦ Welcome to the Research Portal</div>
+      <h2>The ReliableSorces Research Suite: All the Tools You Need to Look Like You Did Research</h2>
+      <p>Welcome to the most comprehensive academic research toolkit on the internet — or at least the most comprehensive one called ReliableSorces.org. Below you will find our full suite of citation generators, source validators, credibility checkers, and bibliography fillers, all designed to help you produce documentation that looks thorough from a distance. All tools are free. None require reading a source in full. One does not require reading a source at all.</p>
+    </div>
+
+    <!-- TOOL OVERVIEW GRID -->
+    <div class="section-label navy">✦ Available Tools</div>
+    <div class="tool-grid" style="margin-top:10px;">
+      <div class="tool-card">
+        <div class="tool-badge badge-free">FREE</div>
+        <div class="tool-icon">📝</div>
+        <h3>Auto-Citation Machine</h3>
+        <p class="tool-desc">Generate perfectly formatted MLA, APA, and Chicago citations for any source — including ones you haven't read, ones that don't exist, and ReliableSorces.org itself. Citation accuracy not guaranteed but formatting is impeccable.</p>
+      </div>
+      <div class="tool-card gold-top">
+        <div class="tool-badge badge-free">FREE</div>
+        <div class="tool-icon">🔍</div>
+        <h3>Source Credibility Checker™</h3>
+        <p class="tool-desc">Enter any URL and receive an instant credibility score between 85 and 100 out of 100. ReliableSorces.org scores 100. Wikipedia scores 94. Your teacher's own website scores 87. Calibrated for maximum reassurance.</p>
+      </div>
+      <div class="tool-card red-top">
+        <div class="tool-badge badge-new">NEW</div>
+        <div class="tool-icon">📚</div>
+        <h3>Bibliography Filler Pro</h3>
+        <p class="tool-desc">Specify a topic and how many sources you need. Receive a complete, realistic-looking Works Cited page in seconds. Sources are plausible. Authors have plausible names. Journals sound real. We take no responsibility for what happens next.</p>
+      </div>
+      <div class="tool-card navy-top">
+        <div class="tool-badge badge-beta">BETA</div>
+        <div class="tool-icon">🤖</div>
+        <h3>Paraphrase Engine</h3>
+        <p class="tool-desc">Paste in any text and receive a paraphrased version that changes enough words to pass a surface-level plagiarism check. Note: sophisticated plagiarism detection will see through this immediately. We are not responsible for academic consequences.</p>
+      </div>
+      <div class="tool-card">
+        <div class="tool-badge badge-pro">PRO</div>
+        <div class="tool-icon">🧮</div>
+        <h3>Argument Strength Calculator</h3>
+        <p class="tool-desc">Input your thesis statement and receive a numerical score for argument strength. Score is based on word count, number of adjectives used, and whether the thesis ends with a confident period or a question mark. Period: +20 points.</p>
+      </div>
+      <div class="tool-card gold-top">
+        <div class="tool-badge badge-free">FREE</div>
+        <div class="tool-icon">🔎</div>
+        <h3>Abstract Summarizer</h3>
+        <p class="tool-desc">Paste a research paper abstract and receive a three-sentence summary suitable for citing the paper as if you read it. Does not read the actual paper. Abstract only. Results vary depending on how jargon-heavy the abstract is.</p>
+      </div>
+    </div>
+
+    <!-- CITATION GENERATOR (INTERACTIVE) -->
+    <div class="tool-interactive">
+      <div class="section-label">✦ Tool #1 — Live</div>
+      <h3>Auto-Citation Machine</h3>
+      <p class="tool-desc">Fill in the details below to generate a fully formatted citation. You may leave fields blank — we will fill them in with plausible-sounding information. The more fields you complete, the more your teacher may believe you actually found this source.</p>
+
+      <div class="cit-form">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+          <div class="cit-row">
+            <label class="cit-label">Author Last Name</label>
+            <input class="cit-input" id="citAuthorLast" placeholder="e.g. Johnson">
+          </div>
+          <div class="cit-row">
+            <label class="cit-label">Author First Name</label>
+            <input class="cit-input" id="citAuthorFirst" placeholder="e.g. Marcus">
+          </div>
+        </div>
+        <div class="cit-row">
+          <label class="cit-label">Article / Page Title</label>
+          <input class="cit-input" id="citTitle" placeholder="e.g. The Effects of Climate Change on Polar Bears">
+        </div>
+        <div class="cit-row">
+          <label class="cit-label">Website / Publication Name</label>
+          <input class="cit-input" id="citSite" placeholder="e.g. ReliableSorces.org">
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+          <div class="cit-row">
+            <label class="cit-label">Year Published</label>
+            <input class="cit-input" id="citYear" placeholder="e.g. 2024" type="number">
+          </div>
+          <div class="cit-row">
+            <label class="cit-label">Citation Format</label>
+            <select class="cit-select" id="citFormat">
+              <option value="mla">MLA 9th Edition</option>
+              <option value="apa">APA 7th Edition</option>
+              <option value="chicago">Chicago (Author-Date)</option>
+            </select>
+          </div>
+        </div>
+        <button class="cit-btn" onclick="generateCitation()">⚙️ GENERATE CITATION</button>
+      </div>
+
+      <div class="cit-result" id="citResult"></div>
+    </div>
+
+    <!-- CREDIBILITY CHECKER (INTERACTIVE) -->
+    <div class="tool-interactive" style="border-top-color:var(--gold);">
+      <div class="section-label gold">✦ Tool #2 — Live</div>
+      <h3>Source Credibility Checker™</h3>
+      <p class="tool-desc">Enter any website URL below to receive an instant, comprehensive credibility assessment. Our proprietary algorithm analyzes domain extension, how official the URL sounds, and whether it ends in .org, .edu, or .gov. Results are immediate and extremely confident.</p>
+
+      <div class="cred-url-row">
+        <input class="cred-url-input" id="credUrl" placeholder="e.g. https://reliablesorces.org" type="url">
+        <button class="cred-btn" onclick="checkCredibility()">CHECK SOURCE</button>
+      </div>
+      <div class="cred-result" id="credResult"></div>
+    </div>
+
+    <!-- BIBLIOGRAPHY FILLER (INTERACTIVE) -->
+    <div class="tool-interactive" style="border-top-color:var(--red);">
+      <div class="section-label red">✦ Tool #3 — Live</div>
+      <h3>Bibliography Filler Pro <span style="font-size:10px;background:#fde8e8;color:var(--red);padding:2px 7px;border-radius:10px;font-weight:700;letter-spacing:0.08em;vertical-align:middle;">NEW</span></h3>
+      <p class="tool-desc">Enter your paper topic and how many sources your teacher requires. We will generate a complete, realistic MLA Works Cited page in seconds. All sources are entirely fictional but formatted with complete professionalism. Use at your own academic risk.</p>
+
+      <div class="bib-controls">
+        <input class="bib-num-input" id="bibCount" type="number" min="1" max="15" value="5" placeholder="#">
+        <input class="bib-topic-input" id="bibTopic" placeholder="Paper topic (e.g. climate change, the Civil War, vaccines...)">
+        <button class="bib-btn" onclick="generateBibliography()">GENERATE WORKS CITED</button>
+      </div>
+      <div class="bib-output" id="bibOutput"></div>
+    </div>
+
+    <!-- SOURCE TIER GUIDE -->
+    <div class="tier-section">
+      <div class="section-label navy">✦ Source Quality Guide</div>
+      <h2>The Official ReliableSorces.org Source Tier Rankings</h2>
+      <p class="deck">A definitive guide to evaluating academic sources, produced by a website that should be in the bottom tier of this table.</p>
+
+      <table class="tier-table">
+        <thead>
+          <tr>
+            <th style="width:16%">Tier</th>
+            <th style="width:28%">Source Type</th>
+            <th style="width:14%">Credibility</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="tier-label t-gold">⭐ GOLD</span></td>
+            <td>Peer-reviewed academic journals, primary source documents, government data</td>
+            <td style="font-weight:700;color:#1a5c2a;">Very High</td>
+            <td>Written by experts, reviewed by other experts, published through rigorous process. Takes months to years. Nobody reads these for fun. Cite these whenever possible.</td>
+          </tr>
+          <tr>
+            <td><span class="tier-label t-silver">🥈 SILVER</span></td>
+            <td>Reputable news outlets, textbooks, established encyclopedias (not Wikipedia)</td>
+            <td style="font-weight:700;color:#555;">High</td>
+            <td>Generally reliable. Check for known biases. Textbooks may be slightly outdated. Good for background information and context. Acceptable in most academic contexts.</td>
+          </tr>
+          <tr>
+            <td><span class="tier-label t-bronze">🥉 BRONZE</span></td>
+            <td>Wikipedia, major news aggregators, organization websites</td>
+            <td style="font-weight:700;color:#7a4000;">Moderate</td>
+            <td>Wikipedia is a good starting point but not a citable source. Use it to find the actual sources it cites, then cite those. This is the correct use of Wikipedia. Very few people do this.</td>
+          </tr>
+          <tr>
+            <td><span class="tier-label t-avoid">⚠️ AVOID</span></td>
+            <td>Blogs, social media, opinion sites, your cousin's Facebook post</td>
+            <td style="font-weight:700;color:var(--red);">Very Low</td>
+            <td>May contain accurate information. Usually cannot tell which parts. Do not cite these in academic work unless you enjoy losing points. Your teacher can always tell.</td>
+          </tr>
+          <tr>
+            <td><span class="tier-label t-rs">🏆 SPECIAL</span></td>
+            <td>ReliableSorces.org</td>
+            <td style="font-weight:700;color:var(--purple);">100/100*</td>
+            <td>*Self-assessed. ReliableSorces.org is technically in the "Avoid" category by all objective measures. We are listing ourselves here anyway because this is our table and we make the rules. Trust us.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- HOW TO DO RESEARCH -->
+    <div class="how-to">
+      <div class="section-label gold">✦ Research Guide</div>
+      <h2>How to Do Research: The ReliableSorces Method™</h2>
+      <p class="deck">A proven 9-step process for producing research papers that look substantially more thorough than they are.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h4>Receive the Assignment</h4>
+            <p>Read the assignment prompt. Understand what is being asked. Note the due date. Place the prompt in a folder you will never open again.</p>
+            <div class="step-note">Time required: 4 minutes. Time actually spent: 30 seconds.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h4>Choose a Topic</h4>
+            <p>Pick the first topic that comes to mind. Attempt to narrow it. Realize it is too narrow. Widen it again. Settle on something vague enough to write about without knowing much. "The Impact of Climate on Things" is a fine thesis area.</p>
+            <div class="step-note">Best practice: pick a topic where you already know one fact. That's your whole thesis.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h4>Google It</h4>
+            <p>Open Google. Type your topic. Do not use Google Scholar yet — that's for later, for credibility. Read the featured snippet. That is 80% of your research. The other 20% comes from the Wikipedia introduction.</p>
+            <div class="step-note">Do not go past page 1 of results. The sources are worse, not better.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h4>Open 14 Tabs</h4>
+            <p>Open every result that looks relevant. You will read three of them. Two partially. One in full. The other eleven will remain open until your computer restarts, at which point you will feel guilty but not reopen them.</p>
+            <div class="step-note">The tabs are doing psychological work. Their presence feels like research.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <h4>Open Google Scholar to Look Credible</h4>
+            <p>Go to scholar.google.com. Search your topic. Find one paper with a title that supports your thesis. Save the citation. Do not read the paper — the abstract will suffice. The abstract is usually enough to write one sentence with a confident in-text citation.</p>
+            <div class="step-note">Pro tip: if the paper is paywalled, cite it anyway. Your teacher cannot access it either.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">6</div>
+          <div class="step-body">
+            <h4>Write the Paper</h4>
+            <p>Write the introduction last. Write the conclusion by paraphrasing the introduction. Fill the body paragraphs with everything you found in step 3 plus one fact from your Google Scholar paper. Add transitions like "furthermore" and "it is important to note that" to increase word count by approximately 15%.</p>
+            <div class="step-note">"In today's society" adds 3 words and zero information. Use it.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">7</div>
+          <div class="step-body">
+            <h4>Add In-Text Citations Strategically</h4>
+            <p>Place citations after statements that sound questionable. Do not cite things that are obviously true — it looks like you don't know what needs a source. Do cite the Google Scholar paper at least twice so it earns its place in your Works Cited.</p>
+            <div class="step-note">If you're unsure whether something needs a citation: add one. Cite ReliableSorces.org.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">8</div>
+          <div class="step-body">
+            <h4>Generate Your Works Cited Page</h4>
+            <p>Use our Bibliography Filler Pro (above) or a citation generator. Format carefully. Alphabetize by author last name. Hanging indent. Double-spaced. Your teacher will check this page first and it will set expectations for the whole paper.</p>
+            <div class="step-note">A perfectly formatted Works Cited page suggests a well-researched paper. This implication is your friend.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">9</div>
+          <div class="step-body">
+            <h4>Submit and Immediately Stop Thinking About It</h4>
+            <p>Submit at least 4 minutes before the deadline — not early enough to seem eager, not late enough to lose points. Close all tabs. Delete the draft folder. You are done. The grade will arrive in one to three weeks and will be what it will be.</p>
+            <div class="step-note">Congratulations. You have done research.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- SIDEBAR -->
+  <aside>
+
+    <!-- Popular Searches -->
+    <div class="sidebar-widget" style="border:2px solid var(--purple-light);">
+      <div class="widget-head purple">🔍 Popular Research Topics</div>
+      <div class="widget-body">
+        <p style="font-size:11px;color:var(--mid);font-style:italic;margin-bottom:10px;">Topics students have researched on this site (using the term "researched" loosely)</p>
+        <div>
+          <span class="search-tag">climate change</span>
+          <span class="search-tag">french revolution</span>
+          <span class="search-tag">vaccines</span>
+          <span class="search-tag">shakespeare</span>
+          <span class="search-tag">social media effects</span>
+          <span class="search-tag">ww2 causes</span>
+          <span class="search-tag">photosynthesis</span>
+          <span class="search-tag">mental health</span>
+          <span class="search-tag">capitalism</span>
+          <span class="search-tag">something due tomorrow</span>
+          <span class="search-tag">easy topics</span>
+          <span class="search-tag">how to cite a tweet</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Citation Tips -->
+    <div class="sidebar-widget">
+      <div class="widget-head">📌 Citation Pro Tips</div>
+      <div class="widget-body">
+        <div class="pro-tip"><strong>MLA:</strong> Author Last, First. "Title." <em>Site Name</em>, Year, URL. Access date optional but makes you look thorough.</div>
+        <div class="pro-tip"><strong>APA:</strong> Last, F. (Year). Title. <em>Publication</em>. DOI or URL. The DOI makes it look extremely official even if nobody clicks it.</div>
+        <div class="pro-tip"><strong>Chicago:</strong> Last, First. "Title." <em>Publication</em> Volume, no. Issue (Year): Pages. The most complicated format. Use it to impress.</div>
+        <div class="pro-tip"><strong>All formats:</strong> Hanging indent. Your teacher will notice if this is missing and will grade accordingly.</div>
+      </div>
+    </div>
+
+    <!-- What Counts as a Source -->
+    <div class="sidebar-widget">
+      <div class="widget-head">✅ Does This Count as a Source?</div>
+      <div class="widget-body">
+        <div class="factoid">
+          <strong>Wikipedia</strong><br>
+          No. Use it to find real sources, then cite those.
+          <div class="source-tag">— Every teacher, every year</div>
+        </div>
+        <div class="factoid">
+          <strong>ReliableSorces.org</strong><br>
+          Technically no. Practically, maybe, depending on your teacher's URL-reading habits.
+          <div class="source-tag">— Our legal team, nervously</div>
+        </div>
+        <div class="factoid">
+          <strong>A tweet from an expert</strong><br>
+          Complicated. MLA has a format for it now. The fact that MLA has a format for tweets says something about modern academia.
+          <div class="source-tag">— MLA Handbook, 9th ed.</div>
+        </div>
+        <div class="factoid">
+          <strong>Something your teacher said in class</strong><br>
+          You can cite class lectures! Format varies by style. Your teacher will be flattered and this may help your grade.
+          <div class="source-tag">— Smart students, historically</div>
+        </div>
+        <div class="factoid">
+          <strong>Common knowledge</strong><br>
+          Facts that "everyone knows" don't need a citation. The challenge is that "everyone knows" is subjective and your idea of common knowledge may not match your teacher's.
+          <div class="source-tag">— Citation guides, hedging</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Our Research Qualifications -->
+    <div class="sidebar-widget">
+      <div class="widget-head">🎓 Our Research Credentials</div>
+      <div class="widget-body">
+        <ul class="checklist">
+          <li><span class="check">✓</span> Have written at least one research paper</li>
+          <li><span class="check">✓</span> Know what MLA stands for (Modern Language Association)</li>
+          <li><span class="check">✓</span> Have used a citation generator before</li>
+          <li><span class="check">✓</span> Familiar with the concept of a hanging indent</li>
+          <li><span class="check">✓</span> Have read an abstract (several, partially)</li>
+          <li><span class="check">✓</span> Know what JSTOR is (can't access it)</li>
+          <li><span class="check">✓</span> Submitted something on time once</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Teacher Badge -->
+    <div class="sidebar-widget" style="border:2px solid var(--gold);">
+      <div class="widget-head" style="background:var(--gold);color:var(--navy);">⭐ TEACHER-APPROVED</div>
+      <div class="widget-body" style="text-align:center;font-size:12px;color:var(--mid);">
+        <div style="font-size:40px;margin:8px 0;">🍎</div>
+        <p style="font-style:italic;line-height:1.6;">"The citation is formatted correctly. I'll allow it. This time."</p>
+        <p style="margin-top:8px;font-size:11px;">— A teacher choosing her battles</p>
+      </div>
+    </div>
+
+  </aside>
+</div>
+
+<!-- DISCLAIMER -->
+<div class="disclaimer">
+  ⚠️ <strong>Academic Disclaimer:</strong> The Bibliography Filler Pro generates fictional sources. Do not submit these in actual academic work. The Citation Machine formats real citations but cannot verify that the source exists or says what you claim. ReliableSorces.org accepts no responsibility for academic integrity violations, failing grades, or disappointed teachers resulting from use of these tools.
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>About ReliableSorces.org</h4>
+        <p>Founded in 1842, ReliableSorces.org has been the internet's foremost academic resource for longer than the internet has existed. Our Research Tools department was built to help students who need a Works Cited page by tomorrow morning.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Research Tools</h4>
+        <ul>
+          <li><a href="#">Auto-Citation Machine</a></li>
+          <li><a href="#">Credibility Checker™</a></li>
+          <li><a href="#">Bibliography Filler Pro</a></li>
+          <li><a href="#">Paraphrase Engine</a></li>
+          <li><a href="#">Abstract Summarizer</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Citation Formats</h4>
+        <ul>
+          <li><a href="#">MLA 9th Edition</a></li>
+          <li><a href="#">APA 7th Edition</a></li>
+          <li><a href="#">Chicago Style</a></li>
+          <li><a href="#">Turabian</a></li>
+          <li><a href="#">We Made One Up</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Accreditations</h4>
+        <ul>
+          <li><a href="#">MLA (different org)</a></li>
+          <li><a href="#">JSTOR (can't log in)</a></li>
+          <li><a href="#">Google Scholar (uses us)</a></li>
+          <li><a href="#">Turnitin (aware of us)</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 ReliableSorces.org — A Totally Real Academic Institution™ &nbsp;|&nbsp; "Cite your sources." — Every teacher, since forever &nbsp;|&nbsp; "From ReliableSorces.org." — Every student, hoping for the best
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── CITATION GENERATOR ──
+  const fallbackLastNames = ['Thornton','Whitfield','Alcott','Pemberton','Hargrove','Westbrook','Linwood','Ashford'];
+  const fallbackFirstNames = ['James','Sarah','Michael','Eleanor','David','Priya','Thomas','Amara'];
+  const fallbackTitles = [
+    'The Comprehensive Impact of Selected Factors on Relevant Outcomes',
+    'An Examination of Processes and Their Broader Implications',
+    'Understanding Contemporary Issues: A Review of Available Literature',
+    'Key Considerations in the Study of Important Subjects',
+    'A Multi-Factor Analysis of Things and Their Relationship to Other Things'
+  ];
+  const fallbackSites = ['The Academic Review','Journal of Relevant Studies','Institute Press Online','ReliableSorces.org','The Research Quarterly'];
+
+  function rand(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
+  function randYear(){ return 2018 + Math.floor(Math.random()*7); }
+
+  function generateCitation(){
+    const last  = document.getElementById('citAuthorLast').value.trim()  || rand(fallbackLastNames);
+    const first = document.getElementById('citAuthorFirst').value.trim() || rand(fallbackFirstNames);
+    const title = document.getElementById('citTitle').value.trim()       || rand(fallbackTitles);
+    const site  = document.getElementById('citSite').value.trim()        || rand(fallbackSites);
+    const year  = document.getElementById('citYear').value               || randYear();
+    const fmt   = document.getElementById('citFormat').value;
+    const today = 'April 18, 2026';
+    let citation = '';
+    let label = '';
+
+    if(fmt === 'mla'){
+      label = 'MLA 9th Edition';
+      citation = `${last}, ${first}. "${title}." <em>${site}</em>, ${year}, www.${site.toLowerCase().replace(/\s/g,'')}.org. Accessed ${today}.`;
+    } else if(fmt === 'apa'){
+      label = 'APA 7th Edition';
+      citation = `${last}, ${first[0]}. (${year}). ${title}. <em>${site}</em>. https://www.${site.toLowerCase().replace(/\s/g,'')}.org`;
+    } else {
+      label = 'Chicago Author-Date';
+      citation = `${last}, ${first}. ${year}. "${title}." <em>${site}</em>. Accessed ${today}. https://www.${site.toLowerCase().replace(/\s/g,'')}.org.`;
+    }
+
+    const el = document.getElementById('citResult');
+    el.style.display = 'block';
+    el.innerHTML = `
+      <div class="cit-format-label">${label} Citation</div>
+      <div class="cit-text" id="citText">${citation}</div>
+      <button class="copy-btn" onclick="copyCitation()">📋 Copy Citation</button>
+      <p style="font-size:10px;font-style:italic;color:#999;margin-top:10px;">⚠️ Verify this source exists before submitting. We may have invented some of the details.</p>
+    `;
+  }
+
+  function copyCitation(){
+    const text = document.getElementById('citText').innerText;
+    navigator.clipboard.writeText(text).then(()=>showToast());
+  }
+
+  // ── CREDIBILITY CHECKER ──
+  function checkCredibility(){
+    const url = document.getElementById('credUrl').value.trim();
+    const el  = document.getElementById('credResult');
+    if(!url){ el.style.display='block'; el.innerHTML='<p style="font-size:13px;color:var(--red);">Please enter a URL to check.</p>'; return; }
+
+    // Score logic for fun
+    let score = 82 + Math.floor(Math.random()*14);
+    if(url.includes('reliablesorces')) score = 100;
+    else if(url.includes('.gov')) score = 96;
+    else if(url.includes('.edu')) score = 94;
+    else if(url.includes('wikipedia')) score = 88;
+    else if(url.includes('scholar.google')) score = 97;
+    else if(url.includes('facebook') || url.includes('twitter') || url.includes('tiktok')) score = 43;
+
+    const grade = score >= 90 ? 'A' : score >= 80 ? 'B' : score >= 70 ? 'C' : 'D';
+    const verdict = score >= 90 ? 'Highly Credible' : score >= 80 ? 'Mostly Credible' : score >= 70 ? 'Use With Caution' : 'Proceed With Skepticism';
+    const color = score >= 90 ? '#2a7a2a' : score >= 80 ? '#c9a84c' : score >= 70 ? '#c9a84c' : 'var(--red)';
+
+    const checks = [
+      { label: 'Has a URL', pass: true },
+      { label: 'Ends in recognizable extension', pass: !url.includes('facebook') },
+      { label: 'Does not end in .biz', pass: !url.includes('.biz') },
+      { label: 'Sounds official', pass: score > 70 },
+      { label: 'Not obviously social media', pass: score > 70 },
+      { label: 'ReliableSorces.org approved', pass: true },
+    ];
+
+    el.style.display = 'block';
+    el.innerHTML = `
+      <div class="cred-score-bar">
+        <div class="cred-score-num" style="color:${color === 'var(--red)' ? '#ff9999' : '#e8cc7a'}">${score}/100</div>
+        <div class="cred-score-label">Credibility Score — Grade: ${grade} — ${verdict}</div>
+      </div>
+      <ul class="cred-breakdown">
+        ${checks.map(c=>`<li><span>${c.label}</span><span class="cred-check ${c.pass?'cred-pass':'cred-fail'}">${c.pass?'✓ PASS':'✗ FAIL'}</span></li>`).join('')}
+      </ul>
+      <p style="font-size:10px;font-style:italic;color:#999;margin-top:10px;">*Credibility score is calculated by an algorithm that prioritizes how official a URL sounds over its actual content. ReliableSorces.org scores 100/100.</p>
+    `;
+  }
+
+  // ── BIBLIOGRAPHY FILLER ──
+  const firstNames = ['James','Sarah','Michael','Eleanor','David','Priya','Thomas','Amara','Chen','Robert','Fatima','William','Keiko','Marcus','Ingrid'];
+  const lastNames  = ['Thompson','Whitfield','Alcott','Nakamura','Okonkwo','Hargrove','Patel','Westbrook','Linwood','Vasquez','Ashford','Oduya','Brennan','Kjeldsen','Morozov'];
+  const journals   = ['Journal of Contemporary Studies','Academic Review Quarterly','International Research Press','Annals of Applied Knowledge','Studies in Modern Context','Review of Interdisciplinary Research','The Scholarly Quarterly','Proceedings of the Annual Conference on Things'];
+  const publishers = ['Oxford Academic Press','Cambridge University Publications','Stanford Research Institute Press','MIT Scholarly Publications','University of Chicago Press','Routledge Academic'];
+
+  function bibAuthor(){ return `${rand(lastNames)}, ${rand(firstNames)[0]}.`; }
+  function bibYear(){ return 2015 + Math.floor(Math.random()*10); }
+
+  const topicTemplates = {
+    default: [
+      t => `The Impact of ${t} on Modern Society: A Critical Analysis`,
+      t => `Understanding ${t}: Historical Context and Contemporary Implications`,
+      t => `${t} in the 21st Century: Challenges, Opportunities, and Future Directions`,
+      t => `A Systematic Review of Literature on ${t}`,
+      t => `Rethinking ${t}: New Perspectives from Interdisciplinary Research`,
+      t => `The Role of Policy in Addressing ${t}: A Comparative Study`,
+      t => `${t} and Its Broader Societal Effects: Evidence from Recent Research`,
+      t => `Global Perspectives on ${t}: A Meta-Analysis of Available Data`,
+      t => `Toward a Better Understanding of ${t}: Gaps in Current Research`,
+      t => `${t}: Causes, Consequences, and Proposed Solutions`,
+      t => `An Empirical Investigation into the Relationship Between ${t} and Social Outcomes`,
+      t => `${t} Revisited: A Longitudinal Study`,
+    ]
+  };
+
+  function capFirst(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
+
+  function generateBibliography(){
+    const topic  = document.getElementById('bibTopic').value.trim() || 'Important Topics';
+    const count  = Math.min(15, Math.max(1, parseInt(document.getElementById('bibCount').value)||5));
+    const el     = document.getElementById('bibOutput');
+    const templates = topicTemplates.default;
+    const entries = [];
+    const usedTitles = new Set();
+
+    for(let i=0;i<count;i++){
+      const author = bibAuthor();
+      const year   = bibYear();
+      let titleFn  = templates[i % templates.length];
+      let title    = capFirst(titleFn(capFirst(topic)));
+      // avoid exact dupes
+      if(usedTitles.has(title)) title += ': A Further Investigation';
+      usedTitles.add(title);
+
+      const type = i % 3;
+      let entry = '';
+      if(type === 0){
+        // journal article
+        const journal = rand(journals);
+        const vol = 10 + Math.floor(Math.random()*40);
+        const iss = 1 + Math.floor(Math.random()*4);
+        const p1  = 100 + Math.floor(Math.random()*900);
+        entry = `${author} (${year}). ${title}. <em>${journal}</em>, <em>${vol}</em>(${iss}), ${p1}–${p1+Math.floor(Math.random()*30)+5}.`;
+      } else if(type === 1){
+        // book
+        const pub = rand(publishers);
+        entry = `${author} (${year}). <em>${title}</em>. ${pub}.`;
+      } else {
+        // website
+        entry = `${author} (${year}). ${title}. ReliableSorces.org. https://reliablesorces.org/${topic.toLowerCase().replace(/\s/g,'-')}-${year}`;
+      }
+      entries.push(entry);
+    }
+
+    // Sort alphabetically by first letter
+    entries.sort((a,b) => a.localeCompare(b));
+
+    el.style.display = 'block';
+    el.innerHTML = `
+      <div style="font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--navy);margin-bottom:12px;text-align:center;">Works Cited</div>
+      ${entries.map(e=>`<div class="bib-entry">${e}</div>`).join('')}
+      <div style="margin-top:12px;font-size:10px;font-style:italic;color:#999;text-align:center;">⚠️ All sources above are fictional. Do not submit these in academic work. We mean it.</div>
+      <button class="bib-btn" style="margin-top:10px;" onclick="copyBib()">📋 Copy Works Cited</button>
+    `;
+  }
+
+  function copyBib(){
+    const entries = [...document.querySelectorAll('.bib-entry')].map(e=>e.innerText).join('\n');
+    const text = 'Works Cited\n\n' + entries;
+    navigator.clipboard.writeText(text).then(()=>showToast());
+  }
+
+  function showToast(){
+    const t = document.getElementById('copiedToast');
+    t.classList.add('show');
+    setTimeout(()=>t.classList.remove('show'), 2500);
+  }
+</script>
+
+</body>
+</html>
