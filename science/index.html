@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Science Facts — ReliableSorces.org</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0a1628;
+      --blue: #1a3a6b;
+      --gold: #c9a84c;
+      --gold-light: #e8cc7a;
+      --cream: #f5f0e8;
+      --red: #8b1a1a;
+      --green: #1a5c2a;
+      --text: #1a1a1a;
+      --mid: #4a4a4a;
+      --border: #d4c9b0;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Source Serif 4', Georgia, serif; background: var(--cream); color: var(--text); }
+
+    /* ── UTILITY BAR ── */
+    .utility-bar {
+      background: var(--navy); color: rgba(255,255,255,0.7);
+      font-size: 11px; letter-spacing: 0.04em;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 5px 40px;
+    }
+    .utility-bar a { color: rgba(255,255,255,0.7); text-decoration: none; margin: 0 8px; }
+    .utility-bar a:hover { color: var(--gold); }
+    .verified-badge {
+      background: var(--gold); color: var(--navy); font-weight: 700;
+      font-size: 10px; letter-spacing: 0.08em; padding: 2px 8px; border-radius: 2px;
+    }
+
+    /* ── MASTHEAD ── */
+    .masthead { background: white; border-bottom: 3px double var(--navy); padding: 20px 40px 0; }
+    .masthead-inner { max-width: 1200px; margin: 0 auto; }
+    .masthead-top {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-bottom: 16px; border-bottom: 1px solid var(--border); margin-bottom: 12px;
+    }
+    .logo-block { display: flex; align-items: center; gap: 18px; }
+    .logo-seal { width: 72px; height: 72px; flex-shrink: 0; }
+    .site-title { font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 900; color: var(--navy); letter-spacing: -1px; line-height: 1; }
+    .site-title span { color: var(--red); }
+    .site-tagline { font-style: italic; color: var(--mid); font-size: 13px; letter-spacing: 0.02em; }
+    .masthead-right { text-align: right; font-size: 12px; color: var(--mid); line-height: 1.7; }
+    .masthead-right strong { display: block; font-size: 20px; color: var(--navy); font-family: 'Playfair Display', serif; }
+    .accreditations { display: flex; gap: 8px; justify-content: flex-end; margin-top: 6px; }
+    .accred-badge { background: var(--navy); color: white; font-size: 9px; font-weight: 700; letter-spacing: 0.06em; padding: 3px 7px; border-radius: 2px; }
+
+    /* ── NAV ── */
+    nav { background: var(--navy); }
+    nav ul { max-width: 1200px; margin: 0 auto; list-style: none; display: flex; }
+    nav ul li a {
+      display: block; color: white; text-decoration: none;
+      font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; padding: 10px 16px; transition: background 0.2s;
+    }
+    nav ul li a:hover { background: var(--gold); color: var(--navy); }
+    nav ul li.active a { background: var(--green); color: white; }
+
+    /* ── BREAKING ── */
+    .breaking {
+      background: var(--green); color: white; padding: 8px 40px;
+      font-size: 12px; display: flex; align-items: center; gap: 12px; overflow: hidden;
+    }
+    .breaking-label {
+      background: white; color: var(--green); font-weight: 900;
+      font-size: 10px; letter-spacing: 0.1em; padding: 2px 8px; flex-shrink: 0;
+    }
+    .breaking-text { white-space: nowrap; animation: ticker 30s linear infinite; }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ── PAGE HERO BANNER ── */
+    .page-hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #1a3a6b 60%, #0d3320 100%);
+      padding: 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '⚗️🔭🧬🧪🔬🧫🦠🌍';
+      position: absolute;
+      font-size: 80px;
+      opacity: 0.05;
+      top: -10px; left: 0; right: 0;
+      letter-spacing: 20px;
+      white-space: nowrap;
+    }
+    .page-hero-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+    .page-category-label {
+      display: inline-block;
+      background: var(--green);
+      color: white;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; padding: 4px 12px; border-radius: 2px;
+      margin-bottom: 14px;
+    }
+    .page-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 52px; font-weight: 900;
+      color: white; line-height: 1.1; margin-bottom: 12px;
+    }
+    .page-hero h1 em { color: var(--gold-light); font-style: italic; }
+    .page-hero p { color: rgba(255,255,255,0.7); font-style: italic; font-size: 16px; max-width: 600px; margin: 0 auto 20px; }
+    .hero-meta { display: flex; justify-content: center; gap: 24px; font-size: 12px; color: rgba(255,255,255,0.5); }
+    .hero-meta span { display: flex; align-items: center; gap: 6px; }
+
+    /* ── MAIN LAYOUT ── */
+    .main-wrap { max-width: 1200px; margin: 30px auto; padding: 0 40px; display: grid; grid-template-columns: 1fr 300px; gap: 40px; }
+
+    /* ── SECTION LABELS ── */
+    .section-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--green);
+      border-top: 3px solid var(--green); padding-top: 6px;
+      margin-bottom: 10px; display: inline-block;
+    }
+    .section-label.red { color: var(--red); border-top-color: var(--red); }
+    .section-label.gold { color: #8a6a00; border-top-color: var(--gold); }
+    .section-label.navy { color: var(--navy); border-top-color: var(--navy); }
+
+    /* ── FEATURED FACT (HERO) ── */
+    .featured-fact {
+      border: 3px solid var(--navy);
+      margin-bottom: 32px;
+      background: white;
+      overflow: hidden;
+    }
+    .featured-fact-banner {
+      background: var(--green);
+      color: white;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; padding: 6px 16px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .featured-fact-body { padding: 24px; }
+    .featured-fact-body h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px; font-weight: 900;
+      color: var(--navy); line-height: 1.2; margin-bottom: 10px;
+    }
+    .fact-deck { font-size: 16px; font-style: italic; color: var(--mid); line-height: 1.6; margin-bottom: 16px; }
+    .fact-body { font-size: 14px; line-height: 1.85; color: var(--mid); margin-bottom: 16px; }
+    .fact-callout {
+      background: #f0f8f0;
+      border-left: 4px solid var(--green);
+      padding: 14px 18px;
+      font-size: 14px; line-height: 1.7; color: var(--text);
+      margin: 16px 0;
+      font-style: italic;
+    }
+    .fact-callout strong { color: var(--green); font-style: normal; }
+    .byline { font-size: 12px; color: var(--mid); border-top: 1px solid var(--border); padding-top: 10px; display: flex; gap: 16px; flex-wrap: wrap; }
+    .byline strong { color: var(--text); }
+
+    /* ── CONFIDENCE METER ── */
+    .confidence-block {
+      background: var(--navy); color: white;
+      padding: 10px 16px; display: flex; align-items: center; gap: 16px;
+      margin: 16px 0; border-radius: 2px; font-size: 13px;
+    }
+    .confidence-label { opacity: 0.7; flex-shrink: 0; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; }
+    .confidence-bar-wrap { flex: 1; background: rgba(255,255,255,0.15); height: 8px; border-radius: 4px; }
+    .confidence-bar { height: 8px; border-radius: 4px; background: var(--gold); }
+    .confidence-score { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--gold-light); font-weight: 900; flex-shrink: 0; }
+
+    /* ── FACT CARDS GRID ── */
+    .fact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 32px; }
+    .fact-card {
+      background: white; border: 1px solid var(--border);
+      border-top: 4px solid var(--green);
+      padding: 18px; position: relative;
+    }
+    .fact-card.red-top { border-top-color: var(--red); }
+    .fact-card.gold-top { border-top-color: var(--gold); }
+    .fact-card.navy-top { border-top-color: var(--navy); }
+    .fact-card-icon { font-size: 28px; margin-bottom: 10px; }
+    .fact-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px; font-weight: 700; color: var(--navy);
+      line-height: 1.3; margin-bottom: 8px;
+    }
+    .fact-card p { font-size: 13px; line-height: 1.65; color: var(--mid); margin-bottom: 10px; }
+    .source-badge {
+      font-size: 10px; color: var(--mid); font-style: italic;
+      border-top: 1px dashed var(--border); padding-top: 8px;
+      display: flex; align-items: center; gap: 4px;
+    }
+    .credibility-pill {
+      display: inline-block;
+      background: #e8f5e9; color: var(--green);
+      font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+      padding: 2px 6px; border-radius: 10px; margin-left: auto;
+    }
+    .credibility-pill.yellow { background: #fffde7; color: #7a6000; }
+    .credibility-pill.red { background: #fde8e8; color: var(--red); }
+
+    /* ── LONG ARTICLE ── */
+    .long-article { border-top: 3px double var(--navy); padding-top: 24px; margin-bottom: 32px; }
+    .long-article h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px; font-weight: 900; color: var(--navy);
+      margin-bottom: 8px; line-height: 1.2;
+    }
+    .long-article .deck { font-size: 15px; font-style: italic; color: var(--mid); margin-bottom: 16px; line-height: 1.5; }
+    .long-article p { font-size: 14px; line-height: 1.85; color: var(--mid); margin-bottom: 12px; }
+    .pull-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; font-style: italic;
+      color: var(--navy); border-top: 2px solid var(--green);
+      border-bottom: 2px solid var(--green);
+      padding: 16px 0; margin: 20px 0; line-height: 1.4;
+    }
+
+    /* ── PERIODIC TABLE WIDGET ── */
+    .element-showcase {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+      margin: 20px 0;
+    }
+    .element-card {
+      background: var(--navy); color: white;
+      padding: 12px; text-align: center; border-radius: 2px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .element-num { font-size: 10px; opacity: 0.5; }
+    .element-sym { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 900; color: var(--gold-light); }
+    .element-name { font-size: 11px; opacity: 0.8; }
+    .element-fact { font-size: 10px; color: var(--gold); font-style: italic; margin-top: 4px; }
+
+    /* ── SIDEBAR ── */
+    .sidebar-widget { border: 1px solid var(--border); margin-bottom: 24px; background: white; }
+    .widget-head {
+      background: var(--navy); color: var(--gold-light);
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 8px 14px;
+    }
+    .widget-head.green { background: var(--green); }
+    .widget-body { padding: 14px; }
+    .factoid { padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 13px; line-height: 1.5; }
+    .factoid:last-child { border-bottom: none; }
+    .factoid strong { color: var(--navy); font-family: 'Playfair Display', serif; }
+    .source-tag { font-size: 10px; color: var(--mid); font-style: italic; }
+
+    /* Science quiz widget */
+    .quiz-question { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 12px; line-height: 1.4; }
+    .quiz-option {
+      display: block; width: 100%; text-align: left;
+      background: var(--cream); border: 1px solid var(--border);
+      padding: 8px 12px; margin-bottom: 6px; font-size: 12px;
+      cursor: pointer; font-family: 'Source Serif 4', serif;
+      transition: all 0.2s; border-radius: 2px;
+    }
+    .quiz-option:hover { background: var(--navy); color: white; border-color: var(--navy); }
+    .quiz-option.correct { background: #e8f5e9; border-color: var(--green); color: var(--green); font-weight: 700; }
+    .quiz-option.wrong { background: #fde8e8; border-color: var(--red); color: var(--red); }
+    .quiz-result { font-size: 12px; font-style: italic; color: var(--mid); margin-top: 8px; display: none; }
+
+    /* Confidence-o-meter sidebar */
+    .com-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; font-size: 12px; }
+    .com-label { width: 100px; color: var(--mid); flex-shrink: 0; }
+    .com-bar-wrap { flex: 1; background: var(--cream); height: 10px; border-radius: 10px; border: 1px solid var(--border); }
+    .com-bar { height: 100%; border-radius: 10px; }
+    .com-pct { width: 32px; text-align: right; font-weight: 700; color: var(--navy); font-size: 11px; }
+
+    /* Checklist */
+    .checklist { list-style: none; }
+    .checklist li { padding: 6px 0; font-size: 12px; display: flex; align-items: flex-start; gap: 8px; border-bottom: 1px dashed var(--border); }
+    .checklist li:last-child { border-bottom: none; }
+    .check { color: #2a8a2a; font-weight: 900; flex-shrink: 0; }
+
+    /* ── DISCLAIMER ── */
+    .disclaimer {
+      background: #fffbe6; border: 1px solid #e6d080; border-left: 4px solid var(--gold);
+      padding: 12px 18px; font-size: 12px; color: #555;
+      max-width: 1200px; margin: 0 auto; text-align: center;
+    }
+
+    /* ── FOOTER ── */
+    footer { background: var(--navy); color: rgba(255,255,255,0.6); padding: 40px; margin-top: 40px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 20px; }
+    .footer-col h4 { color: var(--gold-light); font-family: 'Playfair Display', serif; font-size: 15px; margin-bottom: 14px; }
+    .footer-col p, .footer-col li { font-size: 12px; line-height: 1.7; list-style: none; }
+    .footer-col a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    .footer-col a:hover { color: var(--gold); }
+    .footer-bottom { font-size: 11px; text-align: center; opacity: 0.5; }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb {
+      max-width: 1200px; margin: 0 auto; padding: 10px 40px;
+      font-size: 11px; color: var(--mid); display: flex; gap: 6px; align-items: center;
+    }
+    .breadcrumb a { color: var(--mid); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--navy); }
+    .breadcrumb .sep { opacity: 0.4; }
+    .breadcrumb .current { color: var(--green); font-weight: 600; }
+  </style>
+</head>
+<body>
+
+<!-- UTILITY BAR -->
+<div class="utility-bar">
+  <div>
+    <a href="index.html">Home</a>
+    <a href="#">Subscribe</a>
+    <a href="#">Research Portal</a>
+    <a href="#">Citation Generator</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <span>Saturday, April 18, 2026</span>
+    <span class="verified-badge">✓ SCIENCE VERIFIED</span>
+  </div>
+</div>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <div class="masthead-inner">
+    <div class="masthead-top">
+      <div class="logo-block">
+        <svg class="logo-seal" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="36" cy="36" r="34" fill="#0a1628" stroke="#c9a84c" stroke-width="2"/>
+          <circle cx="36" cy="36" r="28" fill="none" stroke="#c9a84c" stroke-width="1" stroke-dasharray="3 2"/>
+          <text x="36" y="26" text-anchor="middle" fill="#c9a84c" font-size="7" font-family="serif" font-weight="bold" letter-spacing="1">ESTABLISHED</text>
+          <text x="36" y="34" text-anchor="middle" fill="#e8cc7a" font-size="14" font-family="serif" font-weight="bold">RS</text>
+          <text x="36" y="44" text-anchor="middle" fill="#c9a84c" font-size="5.5" font-family="serif" letter-spacing="0.5">RELIABLESORCES</text>
+          <text x="36" y="52" text-anchor="middle" fill="#c9a84c" font-size="6" font-family="serif">• ORG •</text>
+          <text x="36" y="60" text-anchor="middle" fill="#c9a84c" font-size="5.5" font-family="serif" letter-spacing="0.5">EST. 1842</text>
+        </svg>
+        <div>
+          <div class="site-title">Reliable<span>S</span>orces</div>
+          <div class="site-tagline">The Internet's Most Trusted Academic Resource Since 1842™</div>
+        </div>
+      </div>
+      <div class="masthead-right">
+        <strong>Trust Score: 100/100</strong>
+        Peer-Reviewed · Fact-Checked · Totally Real
+        <div class="accreditations">
+          <span class="accred-badge">DOT EDU QUALITY</span>
+          <span class="accred-badge">UNESCO APPROVED</span>
+          <span class="accred-badge">HARVARD CITED</span>
+        </div>
+      </div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li class="active"><a href="#">Science Facts</a></li>
+        <li><a href="#">History (Accurate)</a></li>
+        <li><a href="#">Health & Medicine</a></li>
+        <li><a href="#">Economics</a></li>
+        <li><a href="#">Research Tools</a></li>
+        <li><a href="#">About Our Experts</a></li>
+        <li><a href="#">Why Trust Us</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<!-- BREAKING -->
+<div class="breaking">
+  <span class="breaking-label">SCIENCE ALERT</span>
+  <span class="breaking-text">BREAKING: Scientists confirm water is wet, in paper titled "We Already Knew This" &nbsp;•&nbsp; New study finds that eating nothing but candy is bad, probably &nbsp;•&nbsp; Researchers discover the sun is "very hot" and "far away" &nbsp;•&nbsp; Gravity still real, updated study confirms &nbsp;•&nbsp; NASA successfully describes space as "big" in groundbreaking 400-page report &nbsp;•&nbsp; BREAKING: Scientists confirm water is wet, in paper titled "We Already Knew This" &nbsp;•&nbsp; New study finds that eating nothing but candy is bad, probably &nbsp;•&nbsp; Researchers discover the sun is "very hot" and "far away"</span>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="index.html">Home</a>
+  <span class="sep">›</span>
+  <span class="current">Science Facts</span>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-category-label">🔬 Science Department</div>
+    <h1>Science <em>Facts</em></h1>
+    <p>Rigorous, peer-adjacent scientific findings presented with the confidence of someone who definitely took a science class once.</p>
+    <div class="hero-meta">
+      <span>📚 <strong style="color:white;">2,847</strong> articles</span>
+      <span>🔬 <strong style="color:white;">14</strong> scientists consulted (indirectly)</span>
+      <span>✓ <strong style="color:white;">100%</strong> scientifically sounding</span>
+      <span>⚗️ Last updated: <strong style="color:white;">very recently</strong></span>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main-wrap">
+  <main>
+
+    <!-- FEATURED FACT -->
+    <div class="featured-fact">
+      <div class="featured-fact-banner">
+        ⭐ Fact of the Week — Most-Cited Article on ReliableSorces.org Science Division
+      </div>
+      <div class="featured-fact-body">
+        <div class="section-label">✦ Featured Research</div>
+        <h2>Humans Only Use 10% of Their Brains, and the Other 90% Is Completely Wasted</h2>
+        <p class="fact-deck">A landmark study conducted by experts at the Institute for Brain Stuff confirms what motivational posters have been saying for decades: most of your brain is doing absolutely nothing.</p>
+
+        <div class="confidence-block">
+          <span class="confidence-label">Confidence Level</span>
+          <div class="confidence-bar-wrap"><div class="confidence-bar" style="width:97%"></div></div>
+          <span class="confidence-score">97%</span>
+        </div>
+
+        <p class="fact-body">In a study that has since been cited by at least three inspirational Instagram accounts, neuroscientists at an unspecified university determined that the human brain operates at a mere 10% of its capacity at all times. The remaining 90%, researchers hypothesize, is "just sitting there," possibly storing song lyrics, the faces of people you went to elementary school with, and an inexplicable fear of making phone calls.</p>
+
+        <div class="fact-callout">
+          <strong>"The implications are staggering,"</strong> said lead researcher Dr. Amanda Brainsworth, who has a doctorate in something brain-related. "If we could just unlock the other 90%, humans could probably do math in their heads and also remember where they put their keys."
+        </div>
+
+        <p class="fact-body">The study, published in the <em>Journal of Scientific-Sounding Discoveries</em>, was peer-reviewed by a panel of three colleagues who admitted they "didn't really read the whole thing" but said the abstract "seemed reasonable." Critics of the study, including most actual neuroscientists, have raised concerns, but their objections were not included in this article for brevity.</p>
+
+        <div class="pull-quote">"The other 90% of the brain is not 'doing nothing.' But that is a very complicated thing to explain and this article has a word count minimum." — Dr. Brainsworth, follow-up email</div>
+
+        <p class="fact-body">Further research is planned, pending funding, which the team hopes to secure by selling motivational posters featuring their findings.</p>
+
+        <div class="byline">
+          <span>By <strong>Dr. Amanda Brainsworth, PhD*</strong></span>
+          <span>*PhD in progress, estimated completion: "eventually"</span>
+          <span>Published: March 3, 2026</span>
+          <span>📚 1,204,847 citations (mostly from us)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- FACT CARDS -->
+    <div class="section-label navy">✦ Essential Science Facts</div>
+    <div class="fact-grid">
+
+      <div class="fact-card">
+        <div class="fact-card-icon">🌍</div>
+        <h3>The Great Wall of China Is Visible from Space</h3>
+        <p>Multiple astronauts have confirmed this with their eyes, which are very good. The wall is very long, and space is very high up, so it stands to reason. No further verification was conducted.</p>
+        <div class="source-badge">
+          Source: someone who saw it on a placemat
+          <span class="credibility-pill">CONFIRMED</span>
+        </div>
+      </div>
+
+      <div class="fact-card red-top">
+        <div class="fact-card-icon">⚡</div>
+        <h3>Lightning Never Strikes the Same Place Twice</h3>
+        <p>This is a well-known scientific fact that has been repeated so many times it must be true. The Empire State Building is struck approximately 23 times per year but this is considered an exception and therefore does not count.</p>
+        <div class="source-badge">
+          Source: common knowledge
+          <span class="credibility-pill yellow">PROBABLY</span>
+        </div>
+      </div>
+
+      <div class="fact-card gold-top">
+        <div class="fact-card-icon">🦈</div>
+        <h3>You Are More Likely to Be Attacked by a Shark Than Win the Lottery</h3>
+        <p>Statistically, this sounds right. Both involve very large numbers, water in one case, and significant personal consequences in both. A mathematician was not consulted but the sentence has a very mathematical feel to it.</p>
+        <div class="source-badge">
+          Source: a statistic someone said once
+          <span class="credibility-pill">CONFIRMED</span>
+        </div>
+      </div>
+
+      <div class="fact-card navy-top">
+        <div class="fact-card-icon">💎</div>
+        <h3>Diamonds Are the Hardest Natural Substance on Earth</h3>
+        <p>This one is actually true. We are including it to establish credibility before the next several facts. Please remember this one when evaluating the rest of the page. Thank you for your trust.</p>
+        <div class="source-badge">
+          Source: Mohs hardness scale (real)
+          <span class="credibility-pill">ACTUALLY TRUE</span>
+        </div>
+      </div>
+
+      <div class="fact-card">
+        <div class="fact-card-icon">🍌</div>
+        <h3>Bananas Are Radioactive</h3>
+        <p>Bananas contain potassium-40, making them technically radioactive. This fact is real but has been included here to make the rest of the page seem more credible by association. Do not eat too many bananas. Or do. We're a website, not a doctor.</p>
+        <div class="source-badge">
+          Source: actual science (this one's real too)
+          <span class="credibility-pill">ACTUALLY TRUE</span>
+        </div>
+      </div>
+
+      <div class="fact-card red-top">
+        <div class="fact-card-icon">🐟</div>
+        <h3>Goldfish Have a Three-Second Memory</h3>
+        <p>Goldfish actually have memories lasting months, but this fact has been on the internet since 1998 and at this point we feel it deserves grandfathered credibility. It has appeared in too many classroom posters to be wrong.</p>
+        <div class="source-badge">
+          Source: teachers, mostly
+          <span class="credibility-pill red">DISPUTED</span>
+        </div>
+      </div>
+
+      <div class="fact-card gold-top">
+        <div class="fact-card-icon">💧</div>
+        <h3>Water Can Be Divided Into Hydrogen and Oxygen, Making It Technically a Mixture of Two Gases</h3>
+        <p>The chemical formula H₂O confirms that water is made of hydrogen and oxygen. What happens after that is chemistry and we did not take chemistry past 10th grade. The numbers look correct though.</p>
+        <div class="source-badge">
+          Source: the periodic table (partially)
+          <span class="credibility-pill yellow">ROUGHLY ACCURATE</span>
+        </div>
+      </div>
+
+      <div class="fact-card">
+        <div class="fact-card-icon">🌑</div>
+        <h3>The Moon Controls the Tides and Also Your Mood, Personality, and Future</h3>
+        <p>Science confirms that the moon creates gravitational pull affecting ocean tides. Astrology extends this to human personalities and destiny, and since both involve the moon, researchers see no reason to distinguish between the two phenomena.</p>
+        <div class="source-badge">
+          Source: tidal science + horoscope app
+          <span class="credibility-pill red">CITATION NEEDED</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- LONG ARTICLE -->
+    <div class="long-article">
+      <div class="section-label red">✦ In-Depth Investigation</div>
+      <h2>Is Science Real? An Unbiased Look at Both Sides</h2>
+      <p class="deck">We asked two people their opinions and have presented the results as a balanced scientific investigation.</p>
+
+      <p>The question of whether science is real has long divided opinion. On one hand, science has produced vaccines, smartphones, and the microwave oven. On the other hand, some things that were once considered scientific fact — such as the Earth being flat, the sun revolving around the Earth, and bloodletting as medicine — turned out to be wrong, which raises the uncomfortable question: what if everything is wrong?</p>
+
+      <p>To investigate, our team consulted two individuals: a person who "trusts science" and a person who "does their own research." Both were given equal time to share their perspectives, as journalistic standards require treating all viewpoints as equally valid regardless of evidence.</p>
+
+      <div class="fact-callout">
+        <strong>Pro-Science Argument:</strong> "Science uses the scientific method, peer review, replication, and empirical evidence gathered over centuries by thousands of researchers across dozens of disciplines to build an increasingly accurate model of reality."<br><br>
+        <strong>Anti-Science Argument:</strong> "I saw a video."
+      </div>
+
+      <p>Our panel of judges — consisting of the editor of this article — found both arguments compelling and has declared the debate ongoing. Further research is anticipated but not guaranteed.</p>
+
+      <div style="margin: 20px 0;">
+        <div class="section-label gold">✦ Elements of the Week</div>
+        <p style="font-size:13px;color:var(--mid);margin-bottom:12px;">Our science team has selected these elements from the periodic table based on how cool their symbols look.</p>
+        <div class="element-showcase">
+          <div class="element-card">
+            <div class="element-num">79</div>
+            <div class="element-sym">Au</div>
+            <div class="element-name">Gold</div>
+            <div class="element-fact">"Sounds expensive"</div>
+          </div>
+          <div class="element-card">
+            <div class="element-num">26</div>
+            <div class="element-sym">Fe</div>
+            <div class="element-name">Iron</div>
+            <div class="element-fact">"Very hard, apparently"</div>
+          </div>
+          <div class="element-card">
+            <div class="element-num">80</div>
+            <div class="element-sym">Hg</div>
+            <div class="element-name">Mercury</div>
+            <div class="element-fact">"Do not eat"</div>
+          </div>
+          <div class="element-card">
+            <div class="element-num">2</div>
+            <div class="element-sym">He</div>
+            <div class="element-name">Helium</div>
+            <div class="element-fact">"Makes voice funny"</div>
+          </div>
+          <div class="element-card">
+            <div class="element-num">94</div>
+            <div class="element-sym">Pu</div>
+            <div class="element-name">Plutonium</div>
+            <div class="element-fact">"Definitely do not eat"</div>
+          </div>
+          <div class="element-card">
+            <div class="element-num">47</div>
+            <div class="element-sym">Ag</div>
+            <div class="element-name">Silver</div>
+            <div class="element-fact">"For werewolves, maybe"</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="byline">
+        <span>By <strong>The Science Department</strong></span>
+        <span>ReliableSorces Institute for Scientific-Sounding Content</span>
+        <span>📚 3,847 citations</span>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- SIDEBAR -->
+  <aside>
+
+    <!-- Quiz Widget -->
+    <div class="sidebar-widget" style="border:2px solid var(--green);">
+      <div class="widget-head green">🧪 Science Quiz</div>
+      <div class="widget-body">
+        <p class="quiz-question">According to ReliableSorces.org, what percentage of the human brain do humans use?</p>
+        <button class="quiz-option" onclick="answer(this, false)">A) 100% — the whole brain</button>
+        <button class="quiz-option" onclick="answer(this, false)">B) 50% — they only use one side</button>
+        <button class="quiz-option" onclick="answer(this, true)">C) 10% — the rest is unused</button>
+        <button class="quiz-option" onclick="answer(this, false)">D) It depends on the person</button>
+        <p class="quiz-result" id="quiz-result"></p>
+      </div>
+    </div>
+
+    <!-- Confidence meter -->
+    <div class="sidebar-widget">
+      <div class="widget-head">📊 Accuracy Confidence Levels</div>
+      <div class="widget-body">
+        <p style="font-size:11px;color:var(--mid);font-style:italic;margin-bottom:12px;">Self-assessed by our editorial team</p>
+        <div class="com-row">
+          <span class="com-label">Brain 10% thing</span>
+          <div class="com-bar-wrap"><div class="com-bar" style="width:97%;background:#2a8a2a;"></div></div>
+          <span class="com-pct">97%</span>
+        </div>
+        <div class="com-row">
+          <span class="com-label">Lightning thing</span>
+          <div class="com-bar-wrap"><div class="com-bar" style="width:74%;background:#c9a84c;"></div></div>
+          <span class="com-pct">74%</span>
+        </div>
+        <div class="com-row">
+          <span class="com-label">China wall/space</span>
+          <div class="com-bar-wrap"><div class="com-bar" style="width:88%;background:#2a8a2a;"></div></div>
+          <span class="com-pct">88%</span>
+        </div>
+        <div class="com-row">
+          <span class="com-label">Goldfish memory</span>
+          <div class="com-bar-wrap"><div class="com-bar" style="width:40%;background:#c9a84c;"></div></div>
+          <span class="com-pct">40%</span>
+        </div>
+        <div class="com-row">
+          <span class="com-label">Moon/personality</span>
+          <div class="com-bar-wrap"><div class="com-bar" style="width:22%;background:#8b1a1a;"></div></div>
+          <span class="com-pct">22%</span>
+        </div>
+        <div class="com-row">
+          <span class="com-label">Is Science Real?</span>
+          <div class="com-bar-wrap"><div class="com-bar" style="width:60%;background:#c9a84c;"></div></div>
+          <span class="com-pct">60%</span>
+        </div>
+        <p style="font-size:10px;color:var(--mid);font-style:italic;margin-top:10px;">*Confidence scores are approximate and were determined by how authoritative each claim sounded when read aloud.</p>
+      </div>
+    </div>
+
+    <!-- Did You Know -->
+    <div class="sidebar-widget">
+      <div class="widget-head">🔭 Did You Know?</div>
+      <div class="widget-body">
+        <div class="factoid">
+          <strong>Space is big.</strong><br>
+          Really, really big. Astronomers describe it as "incomprehensibly vast," and then get slightly sad.
+          <span class="source-tag">— Douglas Adams, paraphrased</span>
+        </div>
+        <div class="factoid">
+          <strong>Dogs can smell fear.</strong><br>
+          Dogs can actually detect changes in adrenaline and cortisol. So they can smell stress, not "fear" per se, but this is close enough for our purposes.
+          <span class="source-tag">— Animal science, roughly</span>
+        </div>
+        <div class="factoid">
+          <strong>Bats are blind.</strong><br>
+          Bats are not blind. They see fine. They just also use echolocation. But "blind as a bat" is a saying and sayings are a type of source.
+          <span class="source-tag">— Idioms, confirmed</span>
+        </div>
+        <div class="factoid">
+          <strong>The tongue has taste zones.</strong><br>
+          There are no tongue zones. The entire tongue tastes everything. The map was a mistranslation from 1901. It is still in textbooks.
+          <span class="source-tag">— A regrettable 1901 paper</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Our Method -->
+    <div class="sidebar-widget">
+      <div class="widget-head">⚗️ Our Scientific Method</div>
+      <div class="widget-body">
+        <ul class="checklist">
+          <li><span class="check">1.</span> Form a hypothesis (usually from memory)</li>
+          <li><span class="check">2.</span> Google it briefly</li>
+          <li><span class="check">3.</span> Read headline only</li>
+          <li><span class="check">4.</span> Write article with confidence</li>
+          <li><span class="check">5.</span> Add citations to ourselves</li>
+          <li><span class="check">6.</span> Mark as peer-reviewed</li>
+          <li><span class="check">7.</span> Publish</li>
+          <li><span class="check">8.</span> Ignore corrections</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Teacher Badge -->
+    <div class="sidebar-widget" style="border:2px solid var(--gold);">
+      <div class="widget-head" style="background:var(--gold);color:var(--navy);">⭐ TEACHER-APPROVED</div>
+      <div class="widget-body" style="text-align:center;font-size:12px;color:var(--mid);">
+        <div style="font-size:40px;margin:8px 0;">🍎</div>
+        <p style="font-style:italic;line-height:1.6;">"This counts as a science source. I'll allow it."</p>
+        <p style="margin-top:8px;font-size:11px;">— Definitely a real quote from a teacher</p>
+      </div>
+    </div>
+
+  </aside>
+</div>
+
+<!-- DISCLAIMER -->
+<div class="disclaimer">
+  ⚠️ <strong>Science Disclaimer:</strong> All facts on this page were verified using the scientific method (loosely defined). Some facts are actually true, which we have noted. The rest are presented with equal confidence for consistency. Please do not cite this page in your AP Biology exam.
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>About ReliableSorces.org</h4>
+        <p>Founded in 1842 (we're not sure exactly when), ReliableSorces.org has been the internet's foremost academic resource for longer than the internet has existed. Our mission: making information available to people who need a source by tomorrow morning.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Science Sections</h4>
+        <ul>
+          <li><a href="#">Brain Science (Mostly)</a></li>
+          <li><a href="#">Space & Astronomy</a></li>
+          <li><a href="#">Biology (Roughly)</a></li>
+          <li><a href="#">Chemistry Corner</a></li>
+          <li><a href="#">Physics-Adjacent</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Research Tools</h4>
+        <ul>
+          <li><a href="#">Auto-Citation Machine</a></li>
+          <li><a href="#">Fact Confirmer™</a></li>
+          <li><a href="#">Confidence Calculator</a></li>
+          <li><a href="#">Bibliography Filler</a></li>
+          <li><a href="#">Science Word Generator</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Accreditations</h4>
+        <ul>
+          <li><a href="#">NASA (aware of us)</a></li>
+          <li><a href="#">MIT (spelled correctly)</a></li>
+          <li><a href="#">Nature Magazine (different)</a></li>
+          <li><a href="#">Snopes (listed us)</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 ReliableSorces.org — A Totally Real Academic Institution™ &nbsp;|&nbsp; All science verified by science &nbsp;|&nbsp; "Facts don't care about your feelings, but we do" — Our Science Motto
+    </div>
+  </div>
+</footer>
+
+<script>
+  function answer(btn, correct) {
+    const options = btn.parentElement.querySelectorAll('.quiz-option');
+    const result = document.getElementById('quiz-result');
+    options.forEach(o => o.disabled = true);
+    btn.classList.add(correct ? 'correct' : 'wrong');
+    result.style.display = 'block';
+    if (correct) {
+      result.textContent = '✓ Correct! According to ReliableSorces.org. (Note: this is not what real neuroscience says.)';
+      result.style.color = 'var(--green)';
+    } else {
+      result.textContent = '✗ Wrong! The answer is 10%, according to motivational posters and this website.';
+      result.style.color = 'var(--red)';
+      // highlight correct
+      options[2].classList.add('correct');
+    }
+  }
+</script>
+
+</body>
+</html>
