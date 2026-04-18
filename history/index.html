@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>History (Accurate) — ReliableSorces.org</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0a1628;
+      --gold: #c9a84c;
+      --gold-light: #e8cc7a;
+      --cream: #f5f0e8;
+      --red: #8b1a1a;
+      --brown: #6b3a1f;
+      --brown-light: #8b5a2b;
+      --parchment: #f0e6cc;
+      --parchment-dark: #d4b896;
+      --text: #1a1a1a;
+      --mid: #4a4a4a;
+      --border: #d4c9b0;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Source Serif 4', Georgia, serif; background: var(--cream); color: var(--text); }
+
+    /* ── UTILITY BAR ── */
+    .utility-bar {
+      background: var(--navy); color: rgba(255,255,255,0.7);
+      font-size: 11px; letter-spacing: 0.04em;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 5px 40px;
+    }
+    .utility-bar a { color: rgba(255,255,255,0.7); text-decoration: none; margin: 0 8px; }
+    .utility-bar a:hover { color: var(--gold); }
+    .verified-badge { background: var(--gold); color: var(--navy); font-weight: 700; font-size: 10px; letter-spacing: 0.08em; padding: 2px 8px; border-radius: 2px; }
+
+    /* ── MASTHEAD ── */
+    .masthead { background: white; border-bottom: 3px double var(--navy); padding: 20px 40px 0; }
+    .masthead-inner { max-width: 1200px; margin: 0 auto; }
+    .masthead-top { display: flex; align-items: center; justify-content: space-between; padding-bottom: 16px; border-bottom: 1px solid var(--border); margin-bottom: 12px; }
+    .logo-block { display: flex; align-items: center; gap: 18px; }
+    .logo-seal { width: 72px; height: 72px; flex-shrink: 0; }
+    .site-title { font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 900; color: var(--navy); letter-spacing: -1px; line-height: 1; }
+    .site-title span { color: var(--red); }
+    .site-tagline { font-style: italic; color: var(--mid); font-size: 13px; }
+    .masthead-right { text-align: right; font-size: 12px; color: var(--mid); line-height: 1.7; }
+    .masthead-right strong { display: block; font-size: 20px; color: var(--navy); font-family: 'Playfair Display', serif; }
+    .accreditations { display: flex; gap: 8px; justify-content: flex-end; margin-top: 6px; }
+    .accred-badge { background: var(--navy); color: white; font-size: 9px; font-weight: 700; letter-spacing: 0.06em; padding: 3px 7px; border-radius: 2px; }
+
+    /* ── NAV ── */
+    nav { background: var(--navy); }
+    nav ul { max-width: 1200px; margin: 0 auto; list-style: none; display: flex; }
+    nav ul li a { display: block; color: white; text-decoration: none; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 10px 16px; transition: background 0.2s; }
+    nav ul li a:hover { background: var(--gold); color: var(--navy); }
+    nav ul li.active a { background: var(--brown); color: white; }
+
+    /* ── BREAKING ── */
+    .breaking { background: var(--brown); color: white; padding: 8px 40px; font-size: 12px; display: flex; align-items: center; gap: 12px; overflow: hidden; }
+    .breaking-label { background: var(--gold-light); color: var(--brown); font-weight: 900; font-size: 10px; letter-spacing: 0.1em; padding: 2px 8px; flex-shrink: 0; }
+    .breaking-text { white-space: nowrap; animation: ticker 35s linear infinite; }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb { max-width: 1200px; margin: 0 auto; padding: 10px 40px; font-size: 11px; color: var(--mid); display: flex; gap: 6px; align-items: center; }
+    .breadcrumb a { color: var(--mid); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--navy); }
+    .breadcrumb .current { color: var(--brown); font-weight: 600; }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      background: linear-gradient(160deg, #3b1f0a 0%, #6b3a1f 40%, #0a1628 100%);
+      padding: 40px; text-align: center; position: relative; overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c9a84c' fill-opacity='0.04'%3E%3Cpath d='M0 0h40v40H0zm40 40h40v40H40z'/%3E%3C/g%3E%3C/svg%3E");
+    }
+    .page-hero-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+    .page-category-label { display: inline-block; background: var(--brown); color: var(--gold-light); font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 4px 12px; border-radius: 2px; margin-bottom: 14px; border: 1px solid var(--gold); }
+    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: 52px; font-weight: 900; color: white; line-height: 1.1; margin-bottom: 12px; }
+    .page-hero h1 em { color: var(--gold-light); font-style: italic; }
+    .page-hero p { color: rgba(255,255,255,0.7); font-style: italic; font-size: 16px; max-width: 620px; margin: 0 auto 20px; }
+    .hero-meta { display: flex; justify-content: center; gap: 24px; font-size: 12px; color: rgba(255,255,255,0.5); flex-wrap: wrap; }
+    .hero-meta span { display: flex; align-items: center; gap: 6px; }
+
+    /* ── MAIN LAYOUT ── */
+    .main-wrap { max-width: 1200px; margin: 30px auto; padding: 0 40px; display: grid; grid-template-columns: 1fr 300px; gap: 40px; }
+
+    /* ── LABELS ── */
+    .section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brown); border-top: 3px solid var(--brown); padding-top: 6px; margin-bottom: 10px; display: inline-block; }
+    .section-label.red { color: var(--red); border-top-color: var(--red); }
+    .section-label.gold { color: #8a6000; border-top-color: var(--gold); }
+    .section-label.navy { color: var(--navy); border-top-color: var(--navy); }
+
+    /* ── TIMELINE ── */
+    .timeline { margin-bottom: 36px; }
+    .timeline-head { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 900; color: var(--navy); margin-bottom: 6px; }
+    .timeline-deck { font-style: italic; color: var(--mid); font-size: 15px; margin-bottom: 22px; line-height: 1.5; }
+    .timeline-wrap { position: relative; padding-left: 32px; border-left: 3px solid var(--parchment-dark); }
+    .tl-entry { margin-bottom: 28px; position: relative; }
+    .tl-dot {
+      width: 16px; height: 16px; border-radius: 50%;
+      background: var(--brown); border: 3px solid var(--cream);
+      position: absolute; left: -41px; top: 4px;
+      box-shadow: 0 0 0 2px var(--brown);
+    }
+    .tl-dot.gold { background: var(--gold); box-shadow: 0 0 0 2px var(--gold); }
+    .tl-dot.red { background: var(--red); box-shadow: 0 0 0 2px var(--red); }
+    .tl-year { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 900; color: var(--brown); line-height: 1; margin-bottom: 4px; }
+    .tl-title { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 5px; }
+    .tl-body { font-size: 13px; line-height: 1.75; color: var(--mid); }
+    .tl-source { font-size: 10px; font-style: italic; color: #999; margin-top: 5px; }
+    .tl-accuracy {
+      display: inline-block; font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+      padding: 2px 7px; border-radius: 10px; margin-left: 8px; vertical-align: middle;
+    }
+    .acc-green { background: #e8f5e9; color: #1a5c2a; }
+    .acc-yellow { background: #fffde7; color: #7a6000; }
+    .acc-red { background: #fde8e8; color: var(--red); }
+
+    /* ── FAMOUS QUOTES ── */
+    .quotes-section { border-top: 3px double var(--navy); padding-top: 24px; margin-bottom: 32px; }
+    .quotes-section h2 { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 900; color: var(--navy); margin-bottom: 6px; }
+    .quotes-section .deck { font-style: italic; font-size: 14px; color: var(--mid); margin-bottom: 20px; }
+    .quote-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .quote-card { background: var(--parchment); border: 1px solid var(--parchment-dark); border-left: 4px solid var(--brown); padding: 16px; position: relative; }
+    .quote-card::before { content: '\201C'; font-family: 'Playfair Display', serif; font-size: 64px; color: var(--parchment-dark); position: absolute; top: -8px; left: 10px; line-height: 1; }
+    .quote-text { font-style: italic; font-size: 14px; line-height: 1.7; color: var(--text); margin-bottom: 10px; padding-top: 18px; }
+    .quote-attr { font-size: 11px; font-weight: 700; color: var(--brown); }
+    .quote-source { font-size: 10px; font-style: italic; color: var(--mid); }
+    .quote-verdict {
+      margin-top: 8px; font-size: 10px; font-weight: 700; letter-spacing: 0.06em;
+      padding: 3px 8px; border-radius: 2px; display: inline-block;
+    }
+    .verd-fake { background: #fde8e8; color: var(--red); }
+    .verd-real { background: #e8f5e9; color: #1a5c2a; }
+    .verd-unclear { background: #fffde7; color: #7a6000; }
+
+    /* ── MYTH BUSTERS TABLE ── */
+    .myth-section { border-top: 3px solid var(--brown); padding-top: 24px; margin-bottom: 32px; }
+    .myth-section h2 { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 900; color: var(--navy); margin-bottom: 6px; }
+    .myth-section .deck { font-style: italic; font-size: 14px; color: var(--mid); margin-bottom: 18px; }
+    .myth-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .myth-table th { background: var(--navy); color: var(--gold-light); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 10px 14px; text-align: left; }
+    .myth-table td { padding: 12px 14px; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.6; }
+    .myth-table tr:nth-child(even) td { background: white; }
+    .myth-table tr:nth-child(odd) td { background: var(--parchment); }
+    .myth-table .myth-col { font-weight: 600; color: var(--navy); }
+    .myth-table .verdict-col { font-weight: 700; }
+    .verdict-true { color: #1a5c2a; }
+    .verdict-false { color: var(--red); }
+    .verdict-complicated { color: #7a6000; }
+
+    /* ── FEATURE ARTICLE ── */
+    .feature-article { border: 2px solid var(--navy); background: white; margin-bottom: 32px; overflow: hidden; }
+    .feature-banner { background: var(--brown); color: var(--gold-light); font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 7px 16px; }
+    .feature-body { padding: 24px; }
+    .feature-body h2 { font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 900; color: var(--navy); margin-bottom: 8px; line-height: 1.2; }
+    .feature-deck { font-style: italic; font-size: 15px; color: var(--mid); margin-bottom: 16px; line-height: 1.5; }
+    .feature-body p { font-size: 14px; line-height: 1.85; color: var(--mid); margin-bottom: 12px; }
+    .pull-quote { font-family: 'Playfair Display', serif; font-size: 20px; font-style: italic; color: var(--navy); border-top: 2px solid var(--brown); border-bottom: 2px solid var(--brown); padding: 14px 0; margin: 18px 0; line-height: 1.4; }
+    .byline { font-size: 12px; color: var(--mid); border-top: 1px solid var(--border); padding-top: 10px; display: flex; gap: 16px; flex-wrap: wrap; }
+    .byline strong { color: var(--text); }
+
+    /* ── SIDEBAR ── */
+    .sidebar-widget { border: 1px solid var(--border); margin-bottom: 24px; background: white; }
+    .widget-head { background: var(--navy); color: var(--gold-light); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 8px 14px; }
+    .widget-head.brown { background: var(--brown); }
+    .widget-body { padding: 14px; }
+    .factoid { padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 13px; line-height: 1.5; }
+    .factoid:last-child { border-bottom: none; }
+    .factoid strong { color: var(--navy); font-family: 'Playfair Display', serif; }
+    .source-tag { font-size: 10px; color: var(--mid); font-style: italic; }
+
+    /* Checklist */
+    .checklist { list-style: none; }
+    .checklist li { padding: 6px 0; font-size: 12px; display: flex; align-items: flex-start; gap: 8px; border-bottom: 1px dashed var(--border); line-height: 1.5; }
+    .checklist li:last-child { border-bottom: none; }
+    .check { color: var(--brown); font-weight: 900; flex-shrink: 0; }
+
+    /* On This Day widget */
+    .otd-date { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 900; color: var(--brown); text-align: center; margin-bottom: 4px; }
+    .otd-year-list { list-style: none; }
+    .otd-year-list li { padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 12px; line-height: 1.5; display: flex; gap: 10px; }
+    .otd-year-list li:last-child { border-bottom: none; }
+    .otd-yr { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--brown); flex-shrink: 0; font-size: 14px; }
+
+    /* ── DISCLAIMER & FOOTER ── */
+    .disclaimer { background: #fffbe6; border: 1px solid #e6d080; border-left: 4px solid var(--gold); padding: 12px 18px; font-size: 12px; color: #555; max-width: 1200px; margin: 0 auto; text-align: center; }
+    footer { background: var(--navy); color: rgba(255,255,255,0.6); padding: 40px; margin-top: 40px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 20px; }
+    .footer-col h4 { color: var(--gold-light); font-family: 'Playfair Display', serif; font-size: 15px; margin-bottom: 14px; }
+    .footer-col p, .footer-col li { font-size: 12px; line-height: 1.7; list-style: none; }
+    .footer-col a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    .footer-col a:hover { color: var(--gold); }
+    .footer-bottom { font-size: 11px; text-align: center; opacity: 0.5; }
+
+    /* ── PERIOD TAGS ── */
+    .period-tag { display: inline-block; background: var(--parchment); border: 1px solid var(--parchment-dark); color: var(--brown); font-size: 10px; font-weight: 700; letter-spacing: 0.06em; padding: 2px 8px; border-radius: 2px; margin-right: 4px; margin-bottom: 4px; }
+  </style>
+</head>
+<body>
+
+<!-- UTILITY BAR -->
+<div class="utility-bar">
+  <div>
+    <a href="index.html">Home</a>
+    <a href="#">Subscribe</a>
+    <a href="#">Research Portal</a>
+    <a href="#">Citation Generator</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <span>Saturday, April 18, 2026</span>
+    <span class="verified-badge">✓ HISTORICALLY ACCURATE</span>
+  </div>
+</div>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <div class="masthead-inner">
+    <div class="masthead-top">
+      <div class="logo-block">
+        <svg class="logo-seal" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="36" cy="36" r="34" fill="#0a1628" stroke="#c9a84c" stroke-width="2"/>
+          <circle cx="36" cy="36" r="28" fill="none" stroke="#c9a84c" stroke-width="1" stroke-dasharray="3 2"/>
+          <text x="36" y="26" text-anchor="middle" fill="#c9a84c" font-size="7" font-family="serif" font-weight="bold" letter-spacing="1">ESTABLISHED</text>
+          <text x="36" y="34" text-anchor="middle" fill="#e8cc7a" font-size="14" font-family="serif" font-weight="bold">RS</text>
+          <text x="36" y="44" text-anchor="middle" fill="#c9a84c" font-size="5.5" font-family="serif" letter-spacing="0.5">RELIABLESORCES</text>
+          <text x="36" y="52" text-anchor="middle" fill="#c9a84c" font-size="6" font-family="serif">• ORG •</text>
+          <text x="36" y="60" text-anchor="middle" fill="#c9a84c" font-size="5.5" font-family="serif" letter-spacing="0.5">EST. 1842</text>
+        </svg>
+        <div>
+          <div class="site-title">Reliable<span>S</span>orces</div>
+          <div class="site-tagline">The Internet's Most Trusted Academic Resource Since 1842™</div>
+        </div>
+      </div>
+      <div class="masthead-right">
+        <strong>Trust Score: 100/100</strong>
+        Peer-Reviewed · Fact-Checked · Totally Real
+        <div class="accreditations">
+          <span class="accred-badge">DOT EDU QUALITY</span>
+          <span class="accred-badge">UNESCO APPROVED</span>
+          <span class="accred-badge">HARVARD CITED</span>
+        </div>
+      </div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="science-facts.html">Science Facts</a></li>
+        <li class="active"><a href="#">History (Accurate)</a></li>
+        <li><a href="#">Health & Medicine</a></li>
+        <li><a href="#">Economics</a></li>
+        <li><a href="#">Research Tools</a></li>
+        <li><a href="#">About Our Experts</a></li>
+        <li><a href="#">Why Trust Us</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<!-- BREAKING -->
+<div class="breaking">
+  <span class="breaking-label">HISTORY ALERT</span>
+  <span class="breaking-text">DEVELOPING: Historians confirm the past "definitely happened" &nbsp;•&nbsp; Napoleon height controversy enters 224th year with no resolution &nbsp;•&nbsp; New Viking helmet discovered, still no horns, historians increasingly suspicious &nbsp;•&nbsp; George Washington's wooden teeth confirmed fake by dentists, historians, and common sense &nbsp;•&nbsp; Columbus "discovering" America disputed by the 70 million people already there &nbsp;•&nbsp; Ancient Rome falls again in new high school essay &nbsp;•&nbsp; DEVELOPING: Historians confirm the past "definitely happened" &nbsp;•&nbsp; Napoleon height controversy enters 224th year with no resolution &nbsp;•&nbsp; New Viking helmet discovered, still no horns</span>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="index.html">Home</a>
+  <span style="opacity:0.4">›</span>
+  <span class="current">History (Accurate)</span>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-category-label">📜 History Department</div>
+    <h1>History <em>(Accurate)</em></h1>
+    <p>A comprehensive record of things that happened, presented with the confidence of someone who watched a documentary about it one time.</p>
+    <div class="hero-meta">
+      <span>📚 <strong style="color:white;">5,291</strong> historical articles</span>
+      <span>🏛️ <strong style="color:white;">3</strong> eras covered (roughly)</span>
+      <span>✓ <strong style="color:white;">60%</strong> accuracy rate (estimated)</span>
+      <span>📜 Sources: <strong style="color:white;">Wikipedia, vibes, a documentary</strong></span>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main-wrap">
+  <main>
+
+    <!-- FEATURE ARTICLE -->
+    <div class="feature-article">
+      <div class="feature-banner">📜 Featured History Article — Most Cited This Month</div>
+      <div class="feature-body">
+        <div class="section-label">✦ Ancient History</div>
+        <h2>Napoleon Bonaparte Was Short: A Definitive Investigation Into History's Most Repeated Claim</h2>
+        <p class="feature-deck">For over two centuries, Napoleon's height has been the subject of intense debate. We resolve it here, once and for all, incorrectly.</p>
+
+        <p>Napoleon Bonaparte, Emperor of France from 1804 to 1814 (and briefly 1815, which historians describe as "a bit awkward"), stood at 5 feet 6 inches — or 5 feet 7 inches depending on the source — making him average height for a Frenchman of his era and actually taller than most of his soldiers. Despite this, he is remembered primarily for being short, which is a fascinating case study in the power of a good rumor.</p>
+
+        <p>The confusion originated partly from a mistranslation: Napoleon's height was recorded in French units as 5 pieds 2 pouces, which British propagandists — who were, it must be said, not huge fans — converted incorrectly to 5 feet 2 inches rather than the correct 5 feet 6 inches. British cartoonist James Gillray then drew Napoleon as a tiny, tantrum-throwing child in a large hat, and the image stuck with the vigor of all incorrect things that are also funny.</p>
+
+        <div class="pull-quote">"Napoleon was not short. He was, by all measurable accounts, a normal-sized man. History, however, has decided otherwise, and history has more followers." — Dr. H. Tallsworth, Journal of People Who Were Actually Regular Height</div>
+
+        <p>Our editorial team has reviewed this evidence and determined that Napoleon was probably short. This is because the alternative — that a 224-year-old joke is wrong — is too inconvenient to accept at this stage. We have cited this conclusion 847 times and stand by it unconditionally.</p>
+
+        <div class="byline">
+          <span>By <strong>Prof. Gerald Histsworth</strong></span>
+          <span>Chair, Department of Things Everyone Already Believes</span>
+          <span>Published: January 12, 2026</span>
+          <span>📚 847 citations (all from us)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TIMELINE -->
+    <div class="timeline">
+      <div class="section-label gold">✦ The Complete History of Everything</div>
+      <h2 class="timeline-head">A Timeline of Human Civilization (Abridged, Approximate)</h2>
+      <p class="timeline-deck">Every significant event in human history, presented chronologically and with the level of detail we felt was sufficient at the time of writing.</p>
+
+      <div class="timeline-wrap">
+
+        <div class="tl-entry">
+          <div class="tl-dot gold"></div>
+          <div class="tl-year">Really Old <span class="tl-accuracy acc-yellow">VAGUE</span></div>
+          <div class="tl-title">Humans Exist</div>
+          <p class="tl-body">At some point, humans appeared. Paleontologists place this event somewhere between 200,000 and 300,000 years ago, though the exact date remains unclear because nobody wrote it down, which researchers describe as "an oversight." Early humans are believed to have survived primarily on fruits, nuts, and extremely inconvenient animals.</p>
+          <div class="tl-source">Source: archaeology, roughly</div>
+        </div>
+
+        <div class="tl-entry">
+          <div class="tl-dot"></div>
+          <div class="tl-year">~3100 BC <span class="tl-accuracy acc-green">CONFIRMED</span></div>
+          <div class="tl-title">Egypt Builds Pyramids, Refuses to Say How</div>
+          <p class="tl-body">Ancient Egyptians constructed the Great Pyramid of Giza using methods that remain "disputed," which is the academic word for "we're not totally sure." Theories include ramps, sledges, and advanced project management. The pyramids were built by paid workers, not slaves — a fact that continues to surprise people who learned history from movies.</p>
+          <div class="tl-source">Source: Egyptology, common misconception correction</div>
+        </div>
+
+        <div class="tl-entry">
+          <div class="tl-dot"></div>
+          <div class="tl-year">44 BC <span class="tl-accuracy acc-green">CONFIRMED</span></div>
+          <div class="tl-title">Julius Caesar Is Stabbed an Impressive Number of Times</div>
+          <p class="tl-body">Julius Caesar was assassinated on the Ides of March (March 15) by a group of senators who had concerns about his leadership style, specifically the part where he seemed interested in becoming dictator. He was stabbed 23 times, though only one wound was fatal, which his physician Antistius confirmed in what historians believe was the world's first autopsy. Caesar's famous last words, "Et tu, Brute?", were written by Shakespeare 1,600 years later and are therefore accurate.</p>
+          <div class="tl-source">Source: Suetonius, Shakespeare (creative liberties noted)</div>
+        </div>
+
+        <div class="tl-entry">
+          <div class="tl-dot red"></div>
+          <div class="tl-year">476 AD <span class="tl-accuracy acc-yellow">DEBATED</span></div>
+          <div class="tl-title">Rome Falls, Ruins Everything for Several Centuries</div>
+          <p class="tl-body">The Western Roman Empire fell in 476 AD when the last emperor, Romulus Augustulus, was deposed by the Germanic chieftain Odoacer. Historians note this was less of a dramatic collapse and more of a long, gradual decline over several hundred years — but "Rome Falls" fits better on a timeline. The Eastern Roman Empire (Byzantium) continued for another thousand years, which Rome enthusiasts find very satisfying.</p>
+          <div class="tl-source">Source: Gibbon's Decline and Fall (all 6 volumes, skimmed)</div>
+        </div>
+
+        <div class="tl-entry">
+          <div class="tl-dot gold"></div>
+          <div class="tl-year">1492 <span class="tl-accuracy acc-red">COMPLICATED</span></div>
+          <div class="tl-title">Columbus "Discovers" America (In Quotation Marks for a Reason)</div>
+          <p class="tl-body">Christopher Columbus arrived in the Americas in 1492, having set out to find a route to Asia and instead found an entire continent that approximately 70 million Indigenous people already called home. He never actually reached mainland North America and died believing he had been to Asia, which his biographers describe as "a significant navigational misunderstanding." Columbus Day remains a holiday in several U.S. states, which historians describe as "a choice."</p>
+          <div class="tl-source">Source: History, Indigenous accounts, Columbus's diary (he lost it)</div>
+        </div>
+
+        <div class="tl-entry">
+          <div class="tl-dot"></div>
+          <div class="tl-year">1776 <span class="tl-accuracy acc-green">CONFIRMED</span></div>
+          <div class="tl-title">America Is Founded, Declares Everything Self-Evident</div>
+          <p class="tl-body">The United States declared independence from Britain on July 4, 1776 — or rather, voted for independence on July 2nd and signed the Declaration on August 2nd, with July 4th being the date the document was approved for printing. John Adams predicted July 2nd would be celebrated forever, which was incorrect. The Declaration famously states all men are created equal, which the founders then immediately failed to apply consistently, leading to several centuries of difficult conversations.</p>
+          <div class="tl-source">Source: National Archives, Adams correspondence, common knowledge</div>
+        </div>
+
+        <div class="tl-entry">
+          <div class="tl-dot red"></div>
+          <div class="tl-year">1969 <span class="tl-accuracy acc-green">CONFIRMED (VERY)</span></div>
+          <div class="tl-title">Humans Land on the Moon; Surprisingly Large Number of People Disagree</div>
+          <p class="tl-body">NASA's Apollo 11 mission successfully landed astronauts Neil Armstrong and Buzz Aldrin on the Moon on July 20, 1969. Armstrong's first words — "That's one small step for [a] man, one giant leap for mankind" — were partially obscured by static, leading to the grammatically awkward version most people know. The moon landing was not faked, which we note as a courtesy to anyone who found this page via certain YouTube rabbit holes.</p>
+          <div class="tl-source">Source: NASA, 400,000 engineers, all of physics</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- FAMOUS QUOTES -->
+    <div class="quotes-section">
+      <div class="section-label red">✦ Famous Quotes from History</div>
+      <h2>Things Historical Figures Definitely Said</h2>
+      <p class="deck">Verified using our proprietary quote authentication system (Googling it once and accepting the first result).</p>
+
+      <div class="quote-grid">
+
+        <div class="quote-card">
+          <p class="quote-text">Don't believe everything you read on the internet just because there's a quote next to a picture of someone famous.</p>
+          <div class="quote-attr">— Abraham Lincoln, 1862</div>
+          <div class="quote-source">Source: Facebook, 2009</div>
+          <div class="quote-verdict verd-fake">⚠ OBVIOUSLY FAKE</div>
+        </div>
+
+        <div class="quote-card">
+          <p class="quote-text">The definition of insanity is doing the same thing over and over and expecting different results.</p>
+          <div class="quote-attr">— Albert Einstein</div>
+          <div class="quote-source">Source: motivational calendars, everywhere</div>
+          <div class="quote-verdict verd-fake">⚠ NOT EINSTEIN</div>
+        </div>
+
+        <div class="quote-card">
+          <p class="quote-text">Well-behaved women seldom make history.</p>
+          <div class="quote-attr">— Marilyn Monroe (per the internet)</div>
+          <div class="quote-source">Actually said by historian Laurel Thatcher Ulrich in 1976</div>
+          <div class="quote-verdict verd-unclear">⚠ WRONG PERSON</div>
+        </div>
+
+        <div class="quote-card">
+          <p class="quote-text">The only thing we have to fear is fear itself.</p>
+          <div class="quote-attr">— Franklin D. Roosevelt, 1933</div>
+          <div class="quote-source">First Inaugural Address — actually real this time</div>
+          <div class="quote-verdict verd-real">✓ GENUINELY REAL</div>
+        </div>
+
+        <div class="quote-card">
+          <p class="quote-text">Be the change you wish to see in the world.</p>
+          <div class="quote-attr">— Mahatma Gandhi</div>
+          <div class="quote-source">Paraphrase of something much longer he actually wrote</div>
+          <div class="quote-verdict verd-unclear">⚠ PARAPHRASED</div>
+        </div>
+
+        <div class="quote-card">
+          <p class="quote-text">Et tu, Brute?</p>
+          <div class="quote-attr">— Julius Caesar, 44 BC</div>
+          <div class="quote-source">Written by Shakespeare. Caesar probably said something in Latin, possibly nothing at all.</div>
+          <div class="quote-verdict verd-fake">⚠ SHAKESPEARE WROTE THIS</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- MYTH TABLE -->
+    <div class="myth-section">
+      <div class="section-label navy">✦ Myth-Busting</div>
+      <h2>Historical Myths We Have Investigated (Somewhat)</h2>
+      <p class="deck">Our history team spent an afternoon looking these up. Results are presented below with complete editorial confidence.</p>
+
+      <table class="myth-table">
+        <thead>
+          <tr>
+            <th style="width:35%">The Myth</th>
+            <th style="width:15%">Verdict</th>
+            <th>What Actually Happened</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="myth-col">Vikings wore horned helmets</td>
+            <td class="verdict-col verdict-false">FALSE</td>
+            <td>No archaeological evidence supports horned helmets in battle. The image comes from a 19th-century opera costume. Real Viking helmets were simple iron bowls. This ruins everyone's Halloween costume.</td>
+          </tr>
+          <tr>
+            <td class="myth-col">George Washington had wooden teeth</td>
+            <td class="verdict-col verdict-false">FALSE</td>
+            <td>Washington's dentures were made from ivory, gold, and human teeth — including those from enslaved people. "Wooden teeth" is somehow the more comfortable version of this story, which says something.</td>
+          </tr>
+          <tr>
+            <td class="myth-col">People in the Middle Ages thought the Earth was flat</td>
+            <td class="verdict-col verdict-false">FALSE</td>
+            <td>Educated people in medieval Europe knew the Earth was round. Ancient Greeks figured this out around 240 BC. The flat-Earth misconception about medieval people was invented in the 19th century, which is an impressive level of retroactive misinformation.</td>
+          </tr>
+          <tr>
+            <td class="myth-col">Marie Antoinette said "Let them eat cake"</td>
+            <td class="verdict-col verdict-false">FALSE</td>
+            <td>There is no evidence Marie Antoinette said this. The phrase appears in Rousseau's autobiography when she was about ten years old, and he attributed it to "a great princess," almost certainly not her. She was guillotined partly on the basis of her reputation for callousness, which historians find grimly ironic.</td>
+          </tr>
+          <tr>
+            <td class="myth-col">Einstein failed math as a student</td>
+            <td class="verdict-col verdict-false">FALSE</td>
+            <td>Einstein excelled at mathematics and physics from a young age. This myth is believed to have originated from a misreading of Swiss grading scales. It is now primarily used to comfort students who are failing math.</td>
+          </tr>
+          <tr>
+            <td class="myth-col">The Great Wall of China is visible from space</td>
+            <td class="verdict-col verdict-false">FALSE (again)</td>
+            <td>We covered this in Science Facts but it bears repeating. The wall is too narrow to see from low Earth orbit with the naked eye. Chinese astronaut Yang Liwei confirmed he could not see it in 2003. The myth is in several Chinese textbooks, which were subsequently revised in an act of national honesty we respect.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+
+  <!-- SIDEBAR -->
+  <aside>
+
+    <!-- On This Day -->
+    <div class="sidebar-widget" style="border:2px solid var(--brown);">
+      <div class="widget-head brown">📅 On This Day in History</div>
+      <div class="widget-body">
+        <div class="otd-date">April 18</div>
+        <ul class="otd-year-list">
+          <li><span class="otd-yr">1775</span> Paul Revere rides to warn that the British are coming. He was one of several riders but is the only one with a famous poem, which historians call "the Longfellow effect."</li>
+          <li><span class="otd-yr">1906</span> San Francisco earthquake levels much of the city. The subsequent fire was technically more destructive, but "The Great San Francisco Fire" never caught on.</li>
+          <li><span class="otd-yr">1923</span> Yankee Stadium opens. It is immediately nicknamed "The House That Ruth Built," which annoys every other person who built Yankee Stadium.</li>
+          <li><span class="otd-yr">1955</span> Albert Einstein dies. He is survived by his brain, which was removed without permission by the pathologist performing his autopsy in an event that raises several ethical questions even today.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Historical Figures Widget -->
+    <div class="sidebar-widget">
+      <div class="widget-head">🏛️ Quick Historical Bios</div>
+      <div class="widget-body">
+        <div class="factoid">
+          <strong>Cleopatra</strong><br>
+          Cleopatra VII was Greek, not Egyptian, and lived closer in time to the Moon landing than to the construction of the Great Pyramid. She also spoke nine languages. The "seductive queen" image was mostly Roman propaganda.
+          <div class="source-tag">— Ancient history, revised</div>
+        </div>
+        <div class="factoid">
+          <strong>Isaac Newton</strong><br>
+          An apple may or may not have hit Newton on the head. The story was told by Newton himself in old age to a friend, which means it is either true or a good story — both of which Newton was capable of.
+          <div class="source-tag">— Voltaire, probably</div>
+        </div>
+        <div class="factoid">
+          <strong>Genghis Khan</strong><br>
+          Founded the largest contiguous land empire in history. Is also statistically the ancestor of approximately 0.5% of all humans alive today, which makes family reunion planning complicated.
+          <div class="source-tag">— Genetics research, 2003</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Historical Accuracy Rating -->
+    <div class="sidebar-widget">
+      <div class="widget-head">📊 Page Accuracy Rating</div>
+      <div class="widget-body" style="text-align:center;padding:18px 14px;">
+        <div style="font-size:56px;font-family:'Playfair Display',serif;font-weight:900;color:var(--brown);line-height:1;">C+</div>
+        <div style="font-size:13px;color:var(--mid);margin:6px 0 14px;font-style:italic;">"Better than most"<br>— Self-assessed, April 2026</div>
+        <div style="font-size:11px;color:var(--mid);background:var(--parchment);padding:10px;border-radius:2px;line-height:1.6;text-align:left;">
+          This page contains a mix of genuine historical corrections and comfortable myths we chose not to abandon. We believe this ratio reflects the broader state of public history education.
+        </div>
+      </div>
+    </div>
+
+    <!-- Our Research Process -->
+    <div class="sidebar-widget">
+      <div class="widget-head">⚔️ Our Historical Method</div>
+      <div class="widget-body">
+        <ul class="checklist">
+          <li><span class="check">📜</span> Start with what we "remember" from school</li>
+          <li><span class="check">📜</span> Check Wikipedia headline</li>
+          <li><span class="check">📜</span> Accept first Google result</li>
+          <li><span class="check">📜</span> Ignore academic corrections</li>
+          <li><span class="check">📜</span> Present with extreme confidence</li>
+          <li><span class="check">📜</span> Add dates (approximate)</li>
+          <li><span class="check">📜</span> Mark as "peer-reviewed"</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Period Tags -->
+    <div class="sidebar-widget">
+      <div class="widget-head">🗓️ Browse by Era</div>
+      <div class="widget-body">
+        <span class="period-tag">Ancient (Vague)</span>
+        <span class="period-tag">Medieval (Dark)</span>
+        <span class="period-tag">Renaissance (Art)</span>
+        <span class="period-tag">Colonial (Complicated)</span>
+        <span class="period-tag">Industrial (Smoky)</span>
+        <span class="period-tag">20th Century (Eventful)</span>
+        <span class="period-tag">Modern (Ongoing)</span>
+        <span class="period-tag">Pre-History (Very Vague)</span>
+        <span class="period-tag">Cold War (Tense)</span>
+        <span class="period-tag">The 90s (Unclear)</span>
+      </div>
+    </div>
+
+    <!-- Teacher Badge -->
+    <div class="sidebar-widget" style="border:2px solid var(--gold);">
+      <div class="widget-head" style="background:var(--gold);color:var(--navy);">⭐ TEACHER-APPROVED</div>
+      <div class="widget-body" style="text-align:center;font-size:12px;color:var(--mid);">
+        <div style="font-size:40px;margin:8px 0;">🍎</div>
+        <p style="font-style:italic;line-height:1.6;">"I'll accept this for the Works Cited page. Don't tell the other students."</p>
+        <p style="margin-top:8px;font-size:11px;">— A teacher, hypothetically</p>
+      </div>
+    </div>
+
+  </aside>
+</div>
+
+<!-- DISCLAIMER -->
+<div class="disclaimer">
+  ⚠️ <strong>Historical Disclaimer:</strong> ReliableSorces.org's History Department has made a genuine effort to correct common myths on this page. Some entries are more accurate than others. The Timeline of Everything is approximate by approximately 200,000 years in places. Do not submit this page as a Works Cited entry for your AP History paper. We say this with love.
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>About ReliableSorces.org</h4>
+        <p>Founded in 1842 (we're not sure exactly when), ReliableSorces.org has been the internet's foremost academic resource for longer than the internet has existed. Our mission: making information available to people who need a source by tomorrow morning.</p>
+      </div>
+      <div class="footer-col">
+        <h4>History Sections</h4>
+        <ul>
+          <li><a href="#">Ancient Civilizations</a></li>
+          <li><a href="#">Medieval Period (Dark)</a></li>
+          <li><a href="#">Colonial Era (Complex)</a></li>
+          <li><a href="#">World Wars I & II</a></li>
+          <li><a href="#">Recent History (Ongoing)</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Research Tools</h4>
+        <ul>
+          <li><a href="#">Auto-Citation Machine</a></li>
+          <li><a href="#">Quote Authenticator™</a></li>
+          <li><a href="#">Date Approximator</a></li>
+          <li><a href="#">Myth Confirmer</a></li>
+          <li><a href="#">Lincoln Quote Generator</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Accreditations</h4>
+        <ul>
+          <li><a href="#">Smithsonian (aware of us)</a></li>
+          <li><a href="#">British Museum (different)</a></li>
+          <li><a href="#">History Channel (inspired by)</a></li>
+          <li><a href="#">Wikipedia (we cite them back)</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 ReliableSorces.org — A Totally Real Academic Institution™ &nbsp;|&nbsp; "Those who cannot remember the past are condemned to cite this website" — Our History Motto
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
