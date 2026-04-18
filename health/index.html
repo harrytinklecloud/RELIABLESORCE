@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health & Medicine — ReliableSorces.org</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0a1628;
+      --gold: #c9a84c;
+      --gold-light: #e8cc7a;
+      --cream: #f5f0e8;
+      --red: #8b1a1a;
+      --teal: #0d6b6b;
+      --teal-light: #1a9494;
+      --teal-pale: #e6f4f4;
+      --text: #1a1a1a;
+      --mid: #4a4a4a;
+      --border: #d4c9b0;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Source Serif 4', Georgia, serif; background: var(--cream); color: var(--text); }
+
+    .utility-bar { background: var(--navy); color: rgba(255,255,255,0.7); font-size: 11px; letter-spacing: 0.04em; display: flex; justify-content: space-between; align-items: center; padding: 5px 40px; }
+    .utility-bar a { color: rgba(255,255,255,0.7); text-decoration: none; margin: 0 8px; }
+    .utility-bar a:hover { color: var(--gold); }
+    .verified-badge { background: var(--gold); color: var(--navy); font-weight: 700; font-size: 10px; letter-spacing: 0.08em; padding: 2px 8px; border-radius: 2px; }
+
+    .masthead { background: white; border-bottom: 3px double var(--navy); padding: 20px 40px 0; }
+    .masthead-inner { max-width: 1200px; margin: 0 auto; }
+    .masthead-top { display: flex; align-items: center; justify-content: space-between; padding-bottom: 16px; border-bottom: 1px solid var(--border); margin-bottom: 12px; }
+    .logo-block { display: flex; align-items: center; gap: 18px; }
+    .logo-seal { width: 72px; height: 72px; flex-shrink: 0; }
+    .site-title { font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 900; color: var(--navy); letter-spacing: -1px; line-height: 1; }
+    .site-title span { color: var(--red); }
+    .site-tagline { font-style: italic; color: var(--mid); font-size: 13px; }
+    .masthead-right { text-align: right; font-size: 12px; color: var(--mid); line-height: 1.7; }
+    .masthead-right strong { display: block; font-size: 20px; color: var(--navy); font-family: 'Playfair Display', serif; }
+    .accreditations { display: flex; gap: 8px; justify-content: flex-end; margin-top: 6px; }
+    .accred-badge { background: var(--navy); color: white; font-size: 9px; font-weight: 700; letter-spacing: 0.06em; padding: 3px 7px; border-radius: 2px; }
+
+    nav { background: var(--navy); }
+    nav ul { max-width: 1200px; margin: 0 auto; list-style: none; display: flex; }
+    nav ul li a { display: block; color: white; text-decoration: none; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 10px 16px; transition: background 0.2s; }
+    nav ul li a:hover { background: var(--gold); color: var(--navy); }
+    nav ul li.active a { background: var(--teal); color: white; }
+
+    .breaking { background: var(--teal); color: white; padding: 8px 40px; font-size: 12px; display: flex; align-items: center; gap: 12px; overflow: hidden; }
+    .breaking-label { background: white; color: var(--teal); font-weight: 900; font-size: 10px; letter-spacing: 0.1em; padding: 2px 8px; flex-shrink: 0; }
+    .breaking-text { white-space: nowrap; animation: ticker 35s linear infinite; }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    .breadcrumb { max-width: 1200px; margin: 0 auto; padding: 10px 40px; font-size: 11px; color: var(--mid); display: flex; gap: 6px; align-items: center; }
+    .breadcrumb a { color: var(--mid); text-decoration: none; }
+    .breadcrumb .current { color: var(--teal); font-weight: 600; }
+
+    /* PAGE HERO */
+    .page-hero { background: linear-gradient(160deg, #062020 0%, #0d6b6b 50%, #0a1628 100%); padding: 40px; text-align: center; position: relative; overflow: hidden; }
+    .page-hero::before { content: '🩺💊🧬🩻🔬💉🏥🧪'; position: absolute; font-size: 90px; opacity: 0.04; top: -10px; left: 0; right: 0; letter-spacing: 16px; white-space: nowrap; }
+    .page-hero-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+    .page-category-label { display: inline-block; background: var(--teal); color: white; font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 4px 12px; border-radius: 2px; margin-bottom: 14px; border: 1px solid var(--teal-light); }
+    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: 52px; font-weight: 900; color: white; line-height: 1.1; margin-bottom: 12px; }
+    .page-hero h1 em { color: var(--gold-light); font-style: italic; }
+    .page-hero p { color: rgba(255,255,255,0.7); font-style: italic; font-size: 16px; max-width: 620px; margin: 0 auto 20px; }
+    .hero-meta { display: flex; justify-content: center; gap: 24px; font-size: 12px; color: rgba(255,255,255,0.5); flex-wrap: wrap; }
+
+    /* DISCLAIMER BANNER */
+    .medical-disclaimer-banner { background: #fff3cd; border-bottom: 2px solid #f0c040; padding: 10px 40px; text-align: center; font-size: 12px; color: #7a5a00; }
+    .medical-disclaimer-banner strong { color: #5a3a00; }
+
+    /* MAIN */
+    .main-wrap { max-width: 1200px; margin: 30px auto; padding: 0 40px; display: grid; grid-template-columns: 1fr 300px; gap: 40px; }
+
+    .section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--teal); border-top: 3px solid var(--teal); padding-top: 6px; margin-bottom: 10px; display: inline-block; }
+    .section-label.red { color: var(--red); border-top-color: var(--red); }
+    .section-label.gold { color: #8a6000; border-top-color: var(--gold); }
+    .section-label.navy { color: var(--navy); border-top-color: var(--navy); }
+
+    /* FEATURE */
+    .feature-article { border: 2px solid var(--navy); background: white; margin-bottom: 32px; overflow: hidden; }
+    .feature-banner { background: var(--teal); color: white; font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 7px 16px; }
+    .feature-body { padding: 24px; }
+    .feature-body h2 { font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 900; color: var(--navy); margin-bottom: 8px; line-height: 1.2; }
+    .feature-deck { font-style: italic; font-size: 15px; color: var(--mid); margin-bottom: 16px; line-height: 1.5; }
+    .feature-body p { font-size: 14px; line-height: 1.85; color: var(--mid); margin-bottom: 12px; }
+    .pull-quote { font-family: 'Playfair Display', serif; font-size: 20px; font-style: italic; color: var(--navy); border-top: 2px solid var(--teal); border-bottom: 2px solid var(--teal); padding: 14px 0; margin: 18px 0; line-height: 1.4; }
+    .callout { background: var(--teal-pale); border-left: 4px solid var(--teal); padding: 14px 18px; font-size: 14px; line-height: 1.7; color: var(--text); margin: 16px 0; font-style: italic; }
+    .callout strong { color: var(--teal); font-style: normal; }
+    .byline { font-size: 12px; color: var(--mid); border-top: 1px solid var(--border); padding-top: 10px; display: flex; gap: 16px; flex-wrap: wrap; }
+    .byline strong { color: var(--text); }
+
+    /* REMEDIES GRID */
+    .remedy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 32px; }
+    .remedy-card { background: white; border: 1px solid var(--border); border-top: 4px solid var(--teal); padding: 18px; }
+    .remedy-card.red-top { border-top-color: var(--red); }
+    .remedy-card.gold-top { border-top-color: var(--gold); }
+    .remedy-card.navy-top { border-top-color: var(--navy); }
+    .remedy-icon { font-size: 28px; margin-bottom: 10px; }
+    .remedy-card h3 { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--navy); line-height: 1.3; margin-bottom: 8px; }
+    .remedy-card p { font-size: 13px; line-height: 1.65; color: var(--mid); margin-bottom: 10px; }
+    .effectiveness-row { display: flex; align-items: center; gap: 8px; margin-top: 8px; }
+    .eff-label { font-size: 10px; font-weight: 700; letter-spacing: 0.06em; color: var(--mid); text-transform: uppercase; width: 90px; flex-shrink: 0; }
+    .eff-bar-wrap { flex: 1; background: #eee; height: 8px; border-radius: 4px; }
+    .eff-bar { height: 8px; border-radius: 4px; }
+    .eff-score { font-size: 11px; font-weight: 700; color: var(--navy); width: 32px; text-align: right; }
+    .source-badge { font-size: 10px; color: var(--mid); font-style: italic; border-top: 1px dashed var(--border); padding-top: 8px; margin-top: 8px; }
+
+    /* DR. ADVICE COLUMN */
+    .advice-section { border-top: 3px double var(--navy); padding-top: 24px; margin-bottom: 32px; }
+    .advice-section h2 { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 900; color: var(--navy); margin-bottom: 6px; }
+    .advice-section .deck { font-style: italic; font-size: 14px; color: var(--mid); margin-bottom: 20px; }
+    .qa-entry { border-bottom: 1px solid var(--border); padding-bottom: 20px; margin-bottom: 20px; }
+    .qa-entry:last-child { border-bottom: none; }
+    .qa-question { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 8px; display: flex; gap: 10px; align-items: flex-start; }
+    .q-icon { background: var(--navy); color: var(--gold-light); font-size: 11px; font-weight: 900; padding: 2px 7px; border-radius: 2px; flex-shrink: 0; margin-top: 2px; }
+    .qa-answer { font-size: 14px; line-height: 1.8; color: var(--mid); display: flex; gap: 10px; align-items: flex-start; }
+    .a-icon { background: var(--teal); color: white; font-size: 11px; font-weight: 900; padding: 2px 7px; border-radius: 2px; flex-shrink: 0; margin-top: 2px; }
+    .doctor-sig { font-size: 12px; font-style: italic; color: var(--teal); margin-top: 8px; margin-left: 34px; }
+
+    /* NUTRITION TABLE */
+    .nutrition-section { border-top: 3px solid var(--teal); padding-top: 24px; margin-bottom: 32px; }
+    .nutrition-section h2 { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 900; color: var(--navy); margin-bottom: 6px; }
+    .nutrition-section .deck { font-style: italic; font-size: 14px; color: var(--mid); margin-bottom: 18px; }
+    .nutrition-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .nutrition-table th { background: var(--teal); color: white; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 10px 14px; text-align: left; }
+    .nutrition-table td { padding: 12px 14px; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.6; }
+    .nutrition-table tr:nth-child(even) td { background: white; }
+    .nutrition-table tr:nth-child(odd) td { background: var(--teal-pale); }
+    .food-col { font-weight: 600; color: var(--navy); font-family: 'Playfair Display', serif; }
+    .verdict-col { font-weight: 700; }
+    .v-super { color: #1a5c2a; }
+    .v-fine { color: var(--teal); }
+    .v-unclear { color: #7a6000; }
+    .v-bad { color: var(--red); }
+
+    /* SIDEBAR */
+    .sidebar-widget { border: 1px solid var(--border); margin-bottom: 24px; background: white; }
+    .widget-head { background: var(--navy); color: var(--gold-light); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 8px 14px; }
+    .widget-head.teal { background: var(--teal); color: white; }
+    .widget-body { padding: 14px; }
+    .factoid { padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 13px; line-height: 1.5; }
+    .factoid:last-child { border-bottom: none; }
+    .factoid strong { color: var(--navy); font-family: 'Playfair Display', serif; }
+    .source-tag { font-size: 10px; color: var(--mid); font-style: italic; }
+
+    /* Symptom checker */
+    .symptom-checker { }
+    .symptom-select { width: 100%; padding: 8px 10px; border: 1px solid var(--border); font-family: 'Source Serif 4', serif; font-size: 12px; background: var(--cream); margin-bottom: 10px; border-radius: 2px; }
+    .symptom-btn { width: 100%; background: var(--teal); color: white; border: none; padding: 9px; font-family: 'Source Serif 4', serif; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; cursor: pointer; border-radius: 2px; transition: background 0.2s; }
+    .symptom-btn:hover { background: var(--navy); }
+    .symptom-result { margin-top: 12px; padding: 12px; background: var(--teal-pale); border: 1px solid var(--teal); border-radius: 2px; font-size: 12px; line-height: 1.7; color: var(--text); display: none; }
+    .symptom-result strong { color: var(--teal); }
+
+    /* Health score */
+    .health-score-wrap { text-align: center; padding: 10px 0; }
+    .big-score { font-family: 'Playfair Display', serif; font-size: 52px; font-weight: 900; color: var(--teal); line-height: 1; }
+    .score-caption { font-size: 11px; color: var(--mid); font-style: italic; margin-top: 4px; }
+    .score-breakdown { margin-top: 14px; }
+    .score-row { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; font-size: 11px; }
+    .score-cat { width: 90px; color: var(--mid); flex-shrink: 0; text-align: right; }
+    .score-bar-wrap { flex: 1; background: #eee; height: 8px; border-radius: 4px; }
+    .score-bar { height: 8px; border-radius: 4px; background: var(--teal); }
+    .score-pct { width: 28px; font-weight: 700; color: var(--navy); font-size: 10px; }
+
+    .checklist { list-style: none; }
+    .checklist li { padding: 6px 0; font-size: 12px; display: flex; align-items: flex-start; gap: 8px; border-bottom: 1px dashed var(--border); line-height: 1.5; }
+    .checklist li:last-child { border-bottom: none; }
+    .check { color: var(--teal); font-weight: 900; flex-shrink: 0; }
+
+    .disclaimer { background: #fffbe6; border: 1px solid #e6d080; border-left: 4px solid var(--gold); padding: 12px 18px; font-size: 12px; color: #555; max-width: 1200px; margin: 0 auto; text-align: center; }
+
+    footer { background: var(--navy); color: rgba(255,255,255,0.6); padding: 40px; margin-top: 40px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 20px; }
+    .footer-col h4 { color: var(--gold-light); font-family: 'Playfair Display', serif; font-size: 15px; margin-bottom: 14px; }
+    .footer-col p, .footer-col li { font-size: 12px; line-height: 1.7; list-style: none; }
+    .footer-col a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    .footer-col a:hover { color: var(--gold); }
+    .footer-bottom { font-size: 11px; text-align: center; opacity: 0.5; }
+  </style>
+</head>
+<body>
+
+<!-- UTILITY BAR -->
+<div class="utility-bar">
+  <div>
+    <a href="index.html">Home</a>
+    <a href="#">Subscribe</a>
+    <a href="#">Research Portal</a>
+    <a href="#">Citation Generator</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <span>Saturday, April 18, 2026</span>
+    <span class="verified-badge">✓ MEDICALLY ADJACENT</span>
+  </div>
+</div>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <div class="masthead-inner">
+    <div class="masthead-top">
+      <div class="logo-block">
+        <svg class="logo-seal" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="36" cy="36" r="34" fill="#0a1628" stroke="#c9a84c" stroke-width="2"/>
+          <circle cx="36" cy="36" r="28" fill="none" stroke="#c9a84c" stroke-width="1" stroke-dasharray="3 2"/>
+          <text x="36" y="26" text-anchor="middle" fill="#c9a84c" font-size="7" font-family="serif" font-weight="bold" letter-spacing="1">ESTABLISHED</text>
+          <text x="36" y="34" text-anchor="middle" fill="#e8cc7a" font-size="14" font-family="serif" font-weight="bold">RS</text>
+          <text x="36" y="44" text-anchor="middle" fill="#c9a84c" font-size="5.5" font-family="serif" letter-spacing="0.5">RELIABLESORCES</text>
+          <text x="36" y="52" text-anchor="middle" fill="#c9a84c" font-size="6" font-family="serif">• ORG •</text>
+          <text x="36" y="60" text-anchor="middle" fill="#c9a84c" font-size="5.5" font-family="serif" letter-spacing="0.5">EST. 1842</text>
+        </svg>
+        <div>
+          <div class="site-title">Reliable<span>S</span>orces</div>
+          <div class="site-tagline">The Internet's Most Trusted Academic Resource Since 1842™</div>
+        </div>
+      </div>
+      <div class="masthead-right">
+        <strong>Trust Score: 100/100</strong>
+        Peer-Reviewed · Fact-Checked · Totally Real
+        <div class="accreditations">
+          <span class="accred-badge">DOT EDU QUALITY</span>
+          <span class="accred-badge">WHO ADJACENT</span>
+          <span class="accred-badge">WEBMD COMPETITOR</span>
+        </div>
+      </div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="science-facts.html">Science Facts</a></li>
+        <li><a href="history.html">History (Accurate)</a></li>
+        <li class="active"><a href="#">Health & Medicine</a></li>
+        <li><a href="#">Economics</a></li>
+        <li><a href="#">Research Tools</a></li>
+        <li><a href="#">About Our Experts</a></li>
+        <li><a href="#">Why Trust Us</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<!-- BREAKING -->
+<div class="breaking">
+  <span class="breaking-label">HEALTH ALERT</span>
+  <span class="breaking-text">BREAKING: Drinking water confirmed good, possibly &nbsp;•&nbsp; New study finds that sleeping more makes you less tired, researchers stunned &nbsp;•&nbsp; Doctors warn against self-diagnosing via WebMD; recommend self-diagnosing via ReliableSorces.org instead &nbsp;•&nbsp; Exercise found to be beneficial again in new study contradicting last week's study &nbsp;•&nbsp; Man who ate apple every day for 30 years still had to see doctor eventually &nbsp;•&nbsp; BREAKING: Drinking water confirmed good, possibly &nbsp;•&nbsp; New study finds that sleeping more makes you less tired, researchers stunned &nbsp;•&nbsp; Doctors warn against self-diagnosing via WebMD</span>
+</div>
+
+<!-- MEDICAL DISCLAIMER BANNER -->
+<div class="medical-disclaimer-banner">
+  ⚕️ <strong>Important:</strong> ReliableSorces.org is not staffed by doctors, nurses, or anyone with medical training. Do not use this page to diagnose, treat, or cure anything. If you are experiencing a medical emergency, please call 911 and not read this website.
+</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="index.html">Home</a>
+  <span style="opacity:0.4">›</span>
+  <span class="current">Health & Medicine</span>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-category-label">🩺 Health & Medicine Department</div>
+    <h1>Health & <em>Medicine</em></h1>
+    <p>Evidence-adjacent wellness information presented by writers who have personally experienced having a body and found it mostly confusing.</p>
+    <div class="hero-meta">
+      <span>🩺 <strong style="color:white;">0</strong> doctors on staff</span>
+      <span>💊 <strong style="color:white;">4,102</strong> health articles</span>
+      <span>✓ <strong style="color:white;">WebMD</strong> but worse</span>
+      <span>🧬 Accuracy: <strong style="color:white;">we tried</strong></span>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main-wrap">
+  <main>
+
+    <!-- FEATURE ARTICLE -->
+    <div class="feature-article">
+      <div class="feature-banner">🩺 Featured Health Article — Most Read This Week</div>
+      <div class="feature-body">
+        <div class="section-label">✦ Medical Investigation</div>
+        <h2>You Probably Have Whatever You Just Googled: A Comprehensive Guide to Internet Self-Diagnosis</h2>
+        <p class="feature-deck">A landmark study confirms that searching any symptom online will result in a diagnosis of at least three serious conditions and one rare tropical disease within four minutes.</p>
+
+        <p>Medical professionals have long cautioned patients against self-diagnosing via the internet, a warning that has been almost universally ignored since approximately 1999. The phenomenon — colloquially known as "cyberchondria" by researchers who are definitely not having fun with that word — affects an estimated 72% of adults, all of whom are currently fairly certain they have something.</p>
+
+        <p>Our investigative team at ReliableSorces.org Health & Medicine conducted a rigorous study in which three staff members Googled their symptoms for one afternoon. All three concluded they had either a mild tension headache, a severe neurological event, or a rare blood condition documented in fewer than 200 people globally. Follow-up consultation with an actual physician revealed two of them were dehydrated and one had eaten too much salt.</p>
+
+        <div class="callout">
+          <strong>Key Finding:</strong> The average internet health search takes 4.2 minutes to escalate from "mild headache" to "possible brain tumor" to "rare parasitic condition found only in sub-Saharan river systems." Researchers describe this progression as "inevitable and emotionally exhausting."
+        </div>
+
+        <p>WebMD, the leading competitor in the space of making healthy people feel very unwell, declined to comment. Their symptom checker, when queried with "slightly tired," returned "fatigue may be a sign of over 200 conditions" and then listed them all. ReliableSorces.org's own symptom checker (see sidebar) has been calibrated to provide equally concerning results but with more confident language and slightly worse grammar.</p>
+
+        <div class="pull-quote">"The internet has not replaced your doctor. It has, however, replaced the period between noticing a symptom and calling your doctor with forty-five minutes of escalating panic." — Dr. E. Websworth, Journal of Things People Do Instead of Sleeping</div>
+
+        <p>The study concludes with a recommendation that patients seek qualified medical attention for persistent symptoms, which we include here because it is correct and also because our legal team asked us to.</p>
+
+        <div class="byline">
+          <span>By <strong>Dr. E. Websworth, MD*</strong></span>
+          <span>*MD stands for "mostly determined"</span>
+          <span>Published: February 28, 2026</span>
+          <span>📚 12,847 citations</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- HOME REMEDIES GRID -->
+    <div class="section-label navy">✦ Home Remedies — Effectiveness Ratings</div>
+    <p style="font-size:13px;color:var(--mid);margin-bottom:16px;font-style:italic;">All effectiveness scores are self-reported by people who sell these products or really wanted them to work.</p>
+    <div class="remedy-grid">
+
+      <div class="remedy-card">
+        <div class="remedy-icon">🍯</div>
+        <h3>Honey & Lemon for a Sore Throat</h3>
+        <p>Honey has genuine antimicrobial properties and lemon provides vitamin C. This one actually works reasonably well as a soothing agent. We are including it to maintain credibility before the next several entries.</p>
+        <div class="effectiveness-row">
+          <span class="eff-label">Effectiveness</span>
+          <div class="eff-bar-wrap"><div class="eff-bar" style="width:78%;background:var(--teal);"></div></div>
+          <span class="eff-score">78%</span>
+        </div>
+        <div class="source-badge">Source: actual medicine, mostly ✓</div>
+      </div>
+
+      <div class="remedy-card red-top">
+        <div class="remedy-icon">🧄</div>
+        <h3>Raw Garlic Cures Everything</h3>
+        <p>Garlic contains allicin, which has some antimicrobial properties in laboratory settings. This has been extended by enthusiasts to mean garlic cures colds, infections, bad luck, and "general negativity." We rate this as: garlic is fine, but it is not penicillin.</p>
+        <div class="effectiveness-row">
+          <span class="eff-label">Effectiveness</span>
+          <div class="eff-bar-wrap"><div class="eff-bar" style="width:31%;background:#c9a84c;"></div></div>
+          <span class="eff-score">31%</span>
+        </div>
+        <div class="source-badge">Source: garlic industry, enthusiasts, one aunt</div>
+      </div>
+
+      <div class="remedy-card gold-top">
+        <div class="remedy-icon">🥤</div>
+        <h3>Drinking 8 Glasses of Water a Day</h3>
+        <p>The "8 glasses a day" rule has no specific scientific origin and was likely started by someone making a reasonable guess. Actual hydration needs vary by person, activity, and climate. You should drink water when you're thirsty. This is, medically speaking, the whole advice.</p>
+        <div class="effectiveness-row">
+          <span class="eff-label">Effectiveness</span>
+          <div class="eff-bar-wrap"><div class="eff-bar" style="width:60%;background:#c9a84c;"></div></div>
+          <span class="eff-score">60%</span>
+        </div>
+        <div class="source-badge">Source: someone in 1945, probably</div>
+      </div>
+
+      <div class="remedy-card">
+        <div class="remedy-icon">🌵</div>
+        <h3>Essential Oils for Medical Conditions</h3>
+        <p>Lavender oil has modest evidence for relaxation. Peppermint may ease headaches topically. Beyond this, essential oils enter a territory best described as "optimistic." Replacing prescribed medication with an oil diffuser is not recommended by anyone with a medical license.</p>
+        <div class="effectiveness-row">
+          <span class="eff-label">Effectiveness</span>
+          <div class="eff-bar-wrap"><div class="eff-bar" style="width:18%;background:var(--red);"></div></div>
+          <span class="eff-score">18%</span>
+        </div>
+        <div class="source-badge">Source: MLM distributors, wellness influencers</div>
+      </div>
+
+      <div class="remedy-card navy-top">
+        <div class="remedy-icon">🍵</div>
+        <h3>Green Tea Cures Cancer (Per Some Websites)</h3>
+        <p>Green tea contains antioxidants. Antioxidants are good. Therefore, green tea is good. Therefore, green tea cures cancer. This is the logic chain used on approximately 47,000 wellness blogs. Oncologists describe this reasoning as "a significant leap." Green tea is, however, a fine beverage.</p>
+        <div class="effectiveness-row">
+          <span class="eff-label">Effectiveness</span>
+          <div class="eff-bar-wrap"><div class="eff-bar" style="width:12%;background:var(--red);"></div></div>
+          <span class="eff-score">12%</span>
+        </div>
+        <div class="source-badge">Source: 47,000 blogs, zero oncologists</div>
+      </div>
+
+      <div class="remedy-card red-top">
+        <div class="remedy-icon">🌞</div>
+        <h3>Sunscreen Causes More Harm Than the Sun</h3>
+        <p>This claim circulates regularly on social media, usually accompanied by a grainy photo of a chemical compound name and the word "TOXIC." Dermatologists have addressed this approximately 4,000 times. Skin cancer is the most common cancer in the United States. Please wear sunscreen.</p>
+        <div class="effectiveness-row">
+          <span class="eff-label">Accuracy</span>
+          <div class="eff-bar-wrap"><div class="eff-bar" style="width:2%;background:var(--red);"></div></div>
+          <span class="eff-score">2%</span>
+        </div>
+        <div class="source-badge">Source: a post that got 80,000 shares in 2019</div>
+      </div>
+
+    </div>
+
+    <!-- ASK THE DOCTOR -->
+    <div class="advice-section">
+      <div class="section-label red">✦ Ask Dr. Fontelroy</div>
+      <h2>Your Medical Questions, Answered by Someone</h2>
+      <p class="deck">Dr. Tobias Fontelroy III answers your health questions using a combination of general knowledge, confident tone, and a medical dictionary he skimmed in 2019.</p>
+
+      <div class="qa-entry">
+        <div class="qa-question"><span class="q-icon">Q</span> I've had a headache for two days. What do I have?</div>
+        <div class="qa-answer"><span class="a-icon">A</span> You have a headache. Common causes include dehydration, tension, lack of sleep, too much screen time, and caffeine withdrawal. You may also have a sinus issue, eye strain, or stress. If it persists beyond a few days or is unusually severe, see a doctor. Do not Google it. You will not like what you find.</div>
+        <div class="doctor-sig">— Dr. T. Fontelroy III, practicing (typing)</div>
+      </div>
+
+      <div class="qa-entry">
+        <div class="qa-question"><span class="q-icon">Q</span> Is it safe to eat food that fell on the floor if I pick it up within five seconds?</div>
+        <div class="qa-answer"><span class="a-icon">A</span> The "five-second rule" is not a rule. Bacteria transfer occurs on contact, not after a countdown. That said, the actual risk depends on the food, the floor, and what the floor has recently encountered. A dry cracker on a clean kitchen floor is different from a strawberry on a gas station bathroom floor. Use judgment. We cannot make this decision for you.</div>
+        <div class="doctor-sig">— Dr. T. Fontelroy III, reluctantly</div>
+      </div>
+
+      <div class="qa-entry">
+        <div class="qa-question"><span class="q-icon">Q</span> My cousin told me vaccines cause autism. Is this true?</div>
+        <div class="qa-answer"><span class="a-icon">A</span> No. This claim originated from a 1998 paper by Andrew Wakefield that was retracted, found to be fraudulent, and resulted in Wakefield losing his medical license. Dozens of large-scale studies involving millions of children have found no link between vaccines and autism. Your cousin is incorrect. Vaccines prevent diseases that used to kill large numbers of children. We are stating this clearly and without the usual hedging we employ on this website.</div>
+        <div class="doctor-sig">— Dr. T. Fontelroy III, firmly</div>
+      </div>
+
+      <div class="qa-entry">
+        <div class="qa-question"><span class="q-icon">Q</span> Can I use WebMD to diagnose myself?</div>
+        <div class="qa-answer"><span class="a-icon">A</span> You can. You will find that your mild back pain is either muscular strain, a kidney issue, or a spinal condition requiring immediate surgery. All three will be listed with equal prominence. For an experience equally alarming but with a more confident tone, may we suggest the ReliableSorces.org Symptom Checker in the sidebar, which we built in about twenty minutes and stand behind completely.</div>
+        <div class="doctor-sig">— Dr. T. Fontelroy III, with a wink</div>
+      </div>
+
+    </div>
+
+    <!-- NUTRITION TABLE -->
+    <div class="nutrition-section">
+      <div class="section-label gold">✦ Nutritional Research</div>
+      <h2>Is This Food Good or Bad? The Definitive 2026 Table</h2>
+      <p class="deck">Nutritional science changes every 18 months. This table reflects the current consensus as of this morning and will be outdated by Thursday.</p>
+
+      <table class="nutrition-table">
+        <thead>
+          <tr>
+            <th style="width:20%">Food</th>
+            <th style="width:18%">Current Verdict</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="food-col">🥚 Eggs</td>
+            <td class="verdict-col v-fine">Fine (This Week)</td>
+            <td>Eggs have been bad, good, bad again, and currently good. The cholesterol debate has been running since 1968. Eat them or don't. Check back in 2027 for the next reversal.</td>
+          </tr>
+          <tr>
+            <td class="food-col">🫒 Olive Oil</td>
+            <td class="verdict-col v-super">Superflood</td>
+            <td>Olive oil appears to be genuinely good for you and has remained good for an unusual length of time, raising suspicion among researchers who expect things to flip. Mediterranean diet studies support it consistently. Currently considered safe to enjoy without guilt.</td>
+          </tr>
+          <tr>
+            <td class="food-col">🍫 Dark Chocolate</td>
+            <td class="verdict-col v-unclear">It's Complicated</td>
+            <td>Contains flavonoids, which are antioxidants. Studies show cardiovascular benefits in modest amounts. Twelve studies showing chocolate is good were partly funded by chocolate companies, which researchers describe as "a potential conflict of interest."</td>
+          </tr>
+          <tr>
+            <td class="food-col">☕ Coffee</td>
+            <td class="verdict-col v-fine">Probably Fine</td>
+            <td>Coffee has been linked to reduced risk of Parkinson's, type 2 diabetes, and liver disease in observational studies. It is also linked to anxiety and disrupted sleep. Whether these trade-offs work in your favor depends on you specifically, which is unhelpful but true.</td>
+          </tr>
+          <tr>
+            <td class="food-col">🥗 Salad</td>
+            <td class="verdict-col v-super">Good</td>
+            <td>Vegetables are good. This is the most stable finding in all of nutritional science and has not reversed since approximately ever. Eat more vegetables. This is the whole of nutritional advice distilled to its essence. Everything else is detail.</td>
+          </tr>
+          <tr>
+            <td class="food-col">🧂 Salt</td>
+            <td class="verdict-col v-unclear">Too Much Is Bad</td>
+            <td>High sodium intake is linked to hypertension. Most Americans consume more than recommended. However, extremely low sodium is also bad. The correct amount is "not too much," which is not as specific as people would prefer.</td>
+          </tr>
+          <tr>
+            <td class="food-col">🍷 Red Wine</td>
+            <td class="verdict-col v-bad">Actually Just Wine</td>
+            <td>The "red wine is good for your heart" claim was based on resveratrol research that has not replicated well at the quantities found in actual wine. The French Paradox may be explained by other dietary factors. Moderate alcohol consumption carries real risks. Sorry.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+
+  <!-- SIDEBAR -->
+  <aside>
+
+    <!-- SYMPTOM CHECKER -->
+    <div class="sidebar-widget" style="border:2px solid var(--teal);">
+      <div class="widget-head teal">🩺 Symptom Checker™</div>
+      <div class="widget-body symptom-checker">
+        <p style="font-size:12px;color:var(--mid);margin-bottom:12px;font-style:italic;">Select your primary symptom for an instant, definitely accurate diagnosis.</p>
+        <select class="symptom-select" id="symptomSelect">
+          <option value="">— Choose a symptom —</option>
+          <option value="headache">Headache</option>
+          <option value="tired">Feeling tired</option>
+          <option value="sneeze">Sneezing</option>
+          <option value="backpain">Back pain</option>
+          <option value="hungry">Unusually hungry</option>
+          <option value="cold">Feeling cold</option>
+          <option value="anxious">Feeling anxious</option>
+          <option value="fine">Feeling completely fine</option>
+        </select>
+        <button class="symptom-btn" onclick="diagnose()">DIAGNOSE ME</button>
+        <div class="symptom-result" id="symptomResult"></div>
+      </div>
+    </div>
+
+    <!-- YOUR HEALTH SCORE -->
+    <div class="sidebar-widget">
+      <div class="widget-head">📊 Your Health Score</div>
+      <div class="widget-body">
+        <div class="health-score-wrap">
+          <div class="big-score">B–</div>
+          <div class="score-caption">Estimated for the average reader<br>of this website, specifically</div>
+        </div>
+        <div class="score-breakdown">
+          <div class="score-row">
+            <span class="score-cat">Hydration</span>
+            <div class="score-bar-wrap"><div class="score-bar" style="width:55%"></div></div>
+            <span class="score-pct">55%</span>
+          </div>
+          <div class="score-row">
+            <span class="score-cat">Sleep</span>
+            <div class="score-bar-wrap"><div class="score-bar" style="width:42%"></div></div>
+            <span class="score-pct">42%</span>
+          </div>
+          <div class="score-row">
+            <span class="score-cat">Exercise</span>
+            <div class="score-bar-wrap"><div class="score-bar" style="width:38%"></div></div>
+            <span class="score-pct">38%</span>
+          </div>
+          <div class="score-row">
+            <span class="score-cat">Vegetables</span>
+            <div class="score-bar-wrap"><div class="score-bar" style="width:29%"></div></div>
+            <span class="score-pct">29%</span>
+          </div>
+          <div class="score-row">
+            <span class="score-cat">Screen time</span>
+            <div class="score-bar-wrap"><div class="score-bar" style="width:91%;background:var(--red);"></div></div>
+            <span class="score-pct">91%</span>
+          </div>
+        </div>
+        <p style="font-size:10px;color:var(--mid);font-style:italic;margin-top:10px;">*Score calculated by assuming you are a person who reads health websites at night instead of sleeping.</p>
+      </div>
+    </div>
+
+    <!-- HEALTH TIPS -->
+    <div class="sidebar-widget">
+      <div class="widget-head">💡 Daily Health Tips</div>
+      <div class="widget-body">
+        <div class="factoid">
+          <strong>Tip #1: Sleep</strong><br>
+          Sleeping 7–9 hours is recommended. You will not do this. But the recommendation stands.
+          <div class="source-tag">— Sleep Foundation (real)</div>
+        </div>
+        <div class="factoid">
+          <strong>Tip #2: Walk More</strong><br>
+          The 10,000 steps/day goal was invented by a Japanese pedometer company in 1965 as a marketing slogan. It's still decent advice. Marketing occasionally stumbles into truth.
+          <div class="source-tag">— Marketing history, incidentally</div>
+        </div>
+        <div class="factoid">
+          <strong>Tip #3: Stress Less</strong><br>
+          Chronic stress is genuinely bad for you. This tip offers no mechanism for achieving this. Good luck.
+          <div class="source-tag">— Everyone, always</div>
+        </div>
+        <div class="factoid">
+          <strong>Tip #4: See a Doctor</strong><br>
+          For actual medical concerns, please consult a licensed physician and not a website called ReliableSorces.org.
+          <div class="source-tag">— Our lawyers, sincerely</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OUR CREDENTIALS -->
+    <div class="sidebar-widget">
+      <div class="widget-head">🎓 Our Medical Credentials</div>
+      <div class="widget-body">
+        <ul class="checklist">
+          <li><span class="check">✓</span> All writers have personally had a body</li>
+          <li><span class="check">✓</span> One editor has a first-aid certificate</li>
+          <li><span class="check">✓</span> We have all seen at least one episode of Grey's Anatomy</li>
+          <li><span class="check">✓</span> Dr. Fontelroy once read a WebMD article in full</li>
+          <li><span class="check">✓</span> We know what a stethoscope is</li>
+          <li><span class="check">✓</span> Two of us have had a physical in the last decade</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- TEACHER BADGE -->
+    <div class="sidebar-widget" style="border:2px solid var(--gold);">
+      <div class="widget-head" style="background:var(--gold);color:var(--navy);">⭐ TEACHER-APPROVED</div>
+      <div class="widget-body" style="text-align:center;font-size:12px;color:var(--mid);">
+        <div style="font-size:40px;margin:8px 0;">🍎</div>
+        <p style="font-style:italic;line-height:1.6;">"I'll count this for your health class paper. Probably."</p>
+        <p style="margin-top:8px;font-size:11px;">— A hypothetical teacher who accepts any source</p>
+      </div>
+    </div>
+
+  </aside>
+</div>
+
+<!-- DISCLAIMER -->
+<div class="disclaimer">
+  ⚠️ <strong>Medical Disclaimer:</strong> Nothing on this page constitutes medical advice. ReliableSorces.org is not a doctor, does not employ doctors, and has never met a doctor socially. For actual health information, please consult a licensed medical professional. The Symptom Checker is a joke. Please do not use it to make health decisions.
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>About ReliableSorces.org</h4>
+        <p>Founded in 1842, ReliableSorces.org has been the internet's foremost academic resource for longer than the internet has existed. Our Health & Medicine section is staffed by enthusiastic non-doctors who have read a lot of articles.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Health Sections</h4>
+        <ul>
+          <li><a href="#">Symptoms (Worrying)</a></li>
+          <li><a href="#">Nutrition (Changing)</a></li>
+          <li><a href="#">Home Remedies</a></li>
+          <li><a href="#">Sleep & Stress</a></li>
+          <li><a href="#">Fitness (Eventually)</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Research Tools</h4>
+        <ul>
+          <li><a href="#">Symptom Checker™</a></li>
+          <li><a href="#">Drug Interaction Guesser</a></li>
+          <li><a href="#">Calorie Estimator</a></li>
+          <li><a href="#">Sleep Score Calculator</a></li>
+          <li><a href="#">Health Myth Debunker</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Accreditations</h4>
+        <ul>
+          <li><a href="#">WHO (not affiliated)</a></li>
+          <li><a href="#">CDC (aware of us)</a></li>
+          <li><a href="#">WebMD (competitor)</a></li>
+          <li><a href="#">Mayo Clinic (different)</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 ReliableSorces.org — A Totally Real Academic Institution™ &nbsp;|&nbsp; "An apple a day keeps the doctor away, but see a doctor anyway" — Our Health Motto
+    </div>
+  </div>
+</footer>
+
+<script>
+  const diagnoses = {
+    headache: {
+      title: "Diagnosis: Headache (Probably)",
+      body: "Most likely: dehydration, tension, or screen time. Could also be a cold. Drink some water, rest, and see a doctor if it persists. Likelihood of it being something dramatic: low, but we've left the door open."
+    },
+    tired: {
+      title: "Diagnosis: Tired",
+      body: "You are tired. This is because you did not sleep enough, or slept too much, or slept the wrong way. Also possibly: iron deficiency, thyroid issue, or just being a person in 2026. Recommended treatment: sleep."
+    },
+    sneeze: {
+      title: "Diagnosis: Sneezing",
+      body: "Likely cause: allergies, dust, a cold, dry air, or a pepper nearby. Unlikely but listed: 17 other conditions. Our algorithm suggests you are probably fine. Take an antihistamine or do nothing. Both are valid."
+    },
+    backpain: {
+      title: "Diagnosis: Back Pain",
+      body: "80% of adults experience back pain at some point. Likely cause: posture, muscle strain, or the human spine being poorly designed for modern life. Unlikely causes we are legally required to mention: kidney issues, herniated disc, 'something else.' See a doctor if severe."
+    },
+    hungry: {
+      title: "Diagnosis: Hunger",
+      body: "You are hungry. This is normal. Eat something. If you are hungry immediately after eating, that is a different question. If you are never hungry, also see a doctor. Hunger that follows a normal schedule is not a symptom. Please eat."
+    },
+    cold: {
+      title: "Diagnosis: You Are Cold",
+      body: "Put on a sweater. Alternatively: you may have a fever (counterintuitively), poor circulation, or anemia. Or you are just cold because it is cold. Check the thermostat before concluding you have a circulation disorder."
+    },
+    anxious: {
+      title: "Diagnosis: Anxiety",
+      body: "Anxiety is extremely common and very treatable. Causes include stress, caffeine, lack of sleep, and being alive in the current era of human history. Speaking to a mental health professional is genuinely helpful. We say this one seriously."
+    },
+    fine: {
+      title: "Diagnosis: Suspicious",
+      body: "You feel completely fine, which our algorithm finds statistically unusual for someone reading a health website at this hour. Possible explanations: you are actually fine, you haven't noticed the symptom yet, or you are in the early stages of something. We recommend monitoring."
+    }
+  };
+
+  function diagnose() {
+    const sel = document.getElementById('symptomSelect').value;
+    const result = document.getElementById('symptomResult');
+    if (!sel) {
+      result.style.display = 'block';
+      result.innerHTML = '<strong>Please select a symptom.</strong> We cannot diagnose nothing, though we could probably try.';
+      return;
+    }
+    const d = diagnoses[sel];
+    result.style.display = 'block';
+    result.innerHTML = `<strong>${d.title}</strong><br><br>${d.body}<br><br><em style="font-size:10px;color:#666;">⚕️ This is not real medical advice. Please see an actual doctor.</em>`;
+  }
+</script>
+
+</body>
+</html>
